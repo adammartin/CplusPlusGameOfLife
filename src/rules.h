@@ -10,6 +10,7 @@
 
 class Rules {
 public:
+	Rules(){};
 	virtual ~Rules(){}
 	virtual bool Apply(const unsigned short neighbors);
 };

@@ -6,6 +6,7 @@
 
 using ::testing::Exactly;
 using ::testing::Return;
+using ::testing::_;
 using namespace GameOfLife;
 
 TEST(GenerationAccessor, CanValidateBoardIsAllDead){
@@ -17,26 +18,10 @@ TEST(GenerationAccessor, CanValidateBoardIsAllDead){
 	MockRules livingRules;
 	MockRules deadRules;
 
-	GenerationAccessor accessor(livingRules, deadRules);
+	EXPECT_CALL(deadRules, Apply(0)).Times(Exactly(9));
+
+	GenerationAccessor accessor(&livingRules, &deadRules);
 
 	EXPECT_EQ(expectedGen, accessor.access(firstGen));
 }
-
-TEST(GenerationAccessor, DeadBoardCallsDeadRules){
-	const int data_size=3;
-
-	array_type firstGen(boost::extents[data_size][data_size]);
-	array_type expectedGen(boost::extents[data_size][data_size]);
-
-	MockRules livingRules;
-	MockRules deadRules;
-
-	GenerationAccessor accessor(livingRules, deadRules);
-
-	EXPECT_CALL(deadRules, Apply(0)).Times(Exactly(9));
-
-	accessor.access(firstGen);
-}
-
-
 
