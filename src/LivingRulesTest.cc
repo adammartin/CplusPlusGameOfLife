@@ -1,4 +1,3 @@
-#include <limits.h>
 #include "rules.h"
 #include "LivingRules.h"
 #include "gtest/gtest.h"

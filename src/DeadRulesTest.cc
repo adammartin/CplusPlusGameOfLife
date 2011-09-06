@@ -1,9 +1,8 @@
-#include <limits.h>
 #include "rules.h"
 #include "Deadrules.h"
 #include "gtest/gtest.h"
 
-TEST(Rules, ApplyToDeadCells){
+TEST(Rules, ApplyToDeadCells) {
 	Rules* rules = new DeadRules;
 	EXPECT_EQ(false, rules->Apply(0));
 	EXPECT_EQ(false, rules->Apply(1));
