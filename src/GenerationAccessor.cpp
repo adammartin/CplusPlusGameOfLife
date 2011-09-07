@@ -13,9 +13,7 @@ namespace GameOfLife {
 	Rules *LivingRules;
 	Rules *DeadRules;
 
-	GenerationAccessor::GenerationAccessor(Rules *livingRules, Rules *deadRules) {
-		LivingRules = livingRules;
-		DeadRules = deadRules;
+	GenerationAccessor::GenerationAccessor(Rules *livingRules, Rules *deadRules) :LivingRules(livingRules), DeadRules(deadRules) {
 	}
 
 	GenerationAccessor::~GenerationAccessor() {
