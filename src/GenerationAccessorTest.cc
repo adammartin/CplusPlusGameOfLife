@@ -1,19 +1,22 @@
+#include "GenerationAccessor.h"
+#include "Board.h"
 #include "MockRules.h"
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "GenerationAccessor.h"
 #include "boost/multi_array.hpp"
+#include <iostream>
 
 using ::testing::Exactly;
 using ::testing::Return;
 using ::testing::_;
 using namespace GameOfLife;
+using namespace std;
 
 TEST(GenerationAccessor, CanValidateBoardIsAllDead){
 	const int data_size=3;
 
-	array_type firstGen(boost::extents[data_size][data_size]);
-	array_type expectedGen(boost::extents[data_size][data_size]);
+	Grid firstGen(boost::extents[data_size][data_size]);
+	Grid expectedGrid(boost::extents[data_size][data_size]);
 
 	MockRules livingRules;
 	MockRules deadRules;
@@ -22,6 +25,7 @@ TEST(GenerationAccessor, CanValidateBoardIsAllDead){
 
 	GenerationAccessor accessor(&livingRules, &deadRules);
 
-	EXPECT_EQ(expectedGen, accessor.access(firstGen));
+	EXPECT_EQ(expectedGrid, accessor.access(Board(firstGen)));
 }
+
 

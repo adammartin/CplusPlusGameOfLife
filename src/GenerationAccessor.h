@@ -2,9 +2,9 @@
 #define GENERATIONACCESSOR_H_
 
 #include "rules.h"
+#include "Board.h"
 #include "boost/multi_array.hpp"
 
-typedef boost::multi_array<bool, 2> array_type;
 // TODO: typedef array_type::index array_index;
 
 
@@ -14,7 +14,7 @@ namespace GameOfLife {
 	public:
 		GenerationAccessor(Rules *livingRules, Rules *deadRules);
 		virtual ~GenerationAccessor();
-		array_type access(const array_type &board);
+		Grid access(const Board &board);
 	private:
 		Rules *LivingRules;
 		Rules *DeadRules;
