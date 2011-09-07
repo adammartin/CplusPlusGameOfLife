@@ -5,9 +5,6 @@
 #include "Board.h"
 #include "boost/multi_array.hpp"
 
-// TODO: typedef array_type::index array_index;
-
-
 namespace GameOfLife {
 
 	class GenerationAccessor {
