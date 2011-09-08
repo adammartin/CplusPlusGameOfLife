@@ -11,7 +11,7 @@ namespace GameOfLife {
 	public:
 		GenerationAccessor(Rules *livingRules, Rules *deadRules);
 		virtual ~GenerationAccessor();
-		Grid access(const Board &board);
+		Grid access(const Grid &grid);
 	private:
 		Rules *LivingRules;
 		Rules *DeadRules;

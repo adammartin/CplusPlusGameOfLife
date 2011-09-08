@@ -1,6 +1,4 @@
 #include "rules.h"
-#include "LivingRules.h"
-#include "DeadRules.h"
 #include "Board.h"
 #include "GenerationAccessor.h"
 #include "boost/multi_array.hpp"
@@ -19,8 +17,9 @@ namespace GameOfLife {
 	GenerationAccessor::~GenerationAccessor() {
 	}
 
-	Grid GenerationAccessor::access(const Board &board){
-		int size = board.size();
+	Grid GenerationAccessor::access(const Grid &grid){
+		int size = grid.size();
+		Board oldBoard(grid);
 		Grid newBoard(boost::extents[size][size]);
 		for(short x = 0; x < size; x++){
 			for(short y = 0; y < size; y++){

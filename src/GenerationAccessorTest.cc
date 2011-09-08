@@ -25,7 +25,7 @@ TEST(GenerationAccessor, CanValidateBoardIsAllDead){
 
 	GenerationAccessor accessor(&livingRules, &deadRules);
 
-	EXPECT_EQ(expectedGrid, accessor.access(Board(firstGen)));
+	EXPECT_EQ(Board(expectedGrid), accessor.access(firstGen));
 }
 
 

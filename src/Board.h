@@ -40,7 +40,7 @@ namespace GameOfLife {
 		    return (*boardData) != (*other.boardData);
 		}
 	private:
-		const Grid* boardData;
+		const Grid *boardData;
 		short validPosition(const short index){
 			short length = size();
 			if(index < 0) {
