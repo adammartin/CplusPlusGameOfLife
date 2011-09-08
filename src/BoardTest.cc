@@ -73,6 +73,14 @@ TEST(Board, CanGetCountOfOneLivingNeighborAndNotCountSelf){
 	EXPECT_EQ(1, board.getNeighbors(0,0));
 }
 
+TEST(Board, CanNotGetCountOutOfBounds){
+	Grid base(boost::extents[3][3]);
+
+	Board board(base);
+
+	EXPECT_EQ(0, board.getNeighbors(0,3));
+}
+
 
 
 

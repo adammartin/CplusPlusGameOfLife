@@ -11,10 +11,10 @@ typedef boost::multi_array<bool, 2> Grid;
 namespace GameOfLife {
 	class Board {
 	public:
-		Board(const Grid &newBoard) {
+		explicit Board(const Grid &newBoard) {
 			boardData = &newBoard;
 		};
-		Board(const Board &other) {
+		explicit Board(const Board &other) {
 			boardData = new Grid(*other.boardData);
 		};
 
@@ -45,8 +45,8 @@ namespace GameOfLife {
 			short length = size();
 			if(index < 0) {
 				return 0;
-			} else if (index > length){
-				return length;
+			} else if (index >= length){
+				return length-1;
 			}
 			return index;
 		};
