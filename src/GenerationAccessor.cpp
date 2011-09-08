@@ -8,10 +8,7 @@ using namespace std;
 using ::type_info;
 
 namespace GameOfLife {
-	Rules *LivingRules;
-	Rules *DeadRules;
-
-	GenerationAccessor::GenerationAccessor(Rules *livingRules, Rules *deadRules) :LivingRules(livingRules), DeadRules(deadRules) {
+	GenerationAccessor::GenerationAccessor(Rules& livingRules, Rules& deadRules) :LivingRules(livingRules), DeadRules(deadRules) {
 	}
 
 	GenerationAccessor::~GenerationAccessor() {
@@ -23,7 +20,7 @@ namespace GameOfLife {
 		Grid newBoard(boost::extents[size][size]);
 		for(short x = 0; x < size; x++){
 			for(short y = 0; y < size; y++){
-				DeadRules->Apply(0);
+				DeadRules.Apply(0);
 			}
 		}
 

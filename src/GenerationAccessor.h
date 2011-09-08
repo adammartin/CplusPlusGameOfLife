@@ -9,12 +9,12 @@ namespace GameOfLife {
 
 	class GenerationAccessor {
 	public:
-		GenerationAccessor(Rules *livingRules, Rules *deadRules);
+		GenerationAccessor(Rules& livingRules, Rules& deadRules);
 		virtual ~GenerationAccessor();
 		Grid access(const Grid &grid);
 	private:
-		Rules *LivingRules;
-		Rules *DeadRules;
+		Rules& LivingRules;
+		Rules& DeadRules;
 	};
 
 } /* namespace GameOfLife */
