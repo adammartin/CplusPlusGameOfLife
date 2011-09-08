@@ -23,7 +23,7 @@ TEST(GenerationAccessor, CanValidateBoardIsAllDead){
 
 	EXPECT_CALL(deadRules, Apply(0)).Times(Exactly(9));
 
-	GenerationAccessor accessor(&livingRules, &deadRules);
+	GenerationAccessor accessor(livingRules, deadRules);
 
 	EXPECT_EQ(Board(expectedGrid), accessor.access(firstGen));
 }
