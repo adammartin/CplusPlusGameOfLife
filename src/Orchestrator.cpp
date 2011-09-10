@@ -8,6 +8,10 @@
 
 namespace GameOfLife {
 
+char formatCell(bool b) {
+  return b ? '*' : ' ';
+}
+
 Orchestrator::Orchestrator(GenerationAccessor &rAccessor, LineRenderer &rRenderer, Pattern pattern):accessor(rAccessor), renderer(rRenderer) {
 	Board board;
 	Grid &rGrid = board.build(pattern);
@@ -23,14 +27,9 @@ void Orchestrator::nextGeneration(){
 }
 
 void Orchestrator::printBoard(){
-	int size = (*grid).size();
-	for(int i = 0; i < size; i++){
-		char line[size+1];
-		for(int j = 0; j < size; j++){
-			bool val = (*grid)[i][j];
-			line[j] = (val? '*' : ' ');
-		}
-		line[size] = '\0';
+	for (Grid::iterator i = grid->begin(); i != grid->end(); i++) {
+		string line;
+		transform(i->begin(), i->end(), back_inserter(line), formatCell);
 		renderer.Render(line);
 	}
 }
