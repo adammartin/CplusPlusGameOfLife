@@ -1,0 +1,9 @@
+This is an attempt to learn c++ using the game of life.
+
+In order to use this distribution of the game of life
+you must use the following distributions:
+
+googlemock (version 1.6.0)
+googletest (version 1.6.0)
+boost (1.47.0)
+ncurses (5.9)
