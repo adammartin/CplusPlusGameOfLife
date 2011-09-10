@@ -15,11 +15,11 @@ Orchestrator::Orchestrator(GenerationAccessor &rAccessor, LineRenderer &rRendere
 }
 
 Orchestrator::~Orchestrator() {
-	// TODO Auto-generated destructor stub
 }
 
 void Orchestrator::nextGeneration(){
 	printBoard();
+	grid = &accessor.access(*grid);
 }
 
 void Orchestrator::printBoard(){
