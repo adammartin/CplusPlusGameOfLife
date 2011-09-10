@@ -1,24 +1,20 @@
-#include "GenerationAccessor.h"
+#include "RuleBasedGenerationAccessor.h"
 #include "Board.h"
 #include "MockRules.h"
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "boost/multi_array.hpp"
-#include <iostream>
 
 using ::testing::Exactly;
 using ::testing::Return;
-using ::testing::_;
 using namespace GameOfLife;
-using namespace std;
 
-TEST(GenerationAccessor, CanValidateBoardIsAllDead){
+TEST(RuleBasedGenerationAccessor, CanValidateBoardIsAllDead){
 	const int data_size=3;
 
 	MockRules livingRules;
 	MockRules deadRules;
 
-	GenerationAccessor accessor(livingRules, deadRules);
+	RuleBasedGenerationAccessor accessor(livingRules, deadRules);
 
 	Grid firstGen(boost::extents[data_size][data_size]);
 	Grid expectedGrid(boost::extents[data_size][data_size]);
@@ -32,13 +28,13 @@ TEST(GenerationAccessor, CanValidateBoardIsAllDead){
 	delete &response;
 }
 
-TEST(GenerationAccessor, CanValidateBoardCallCorrectRulesForAllAlive){
+TEST(RuleBasedGenerationAccessor, CanValidateBoardCallCorrectRulesForAllAlive){
 	const int data_size=3;
 
 	MockRules livingRules;
 	MockRules deadRules;
 
-	GenerationAccessor accessor(livingRules, deadRules);
+	RuleBasedGenerationAccessor accessor(livingRules, deadRules);
 
 	Grid firstGen(boost::extents[data_size][data_size]);
 	Grid expectedGrid(boost::extents[data_size][data_size]);
@@ -60,13 +56,13 @@ TEST(GenerationAccessor, CanValidateBoardCallCorrectRulesForAllAlive){
 	delete &response;
 }
 
-TEST(GenerationAccessor, WillSetBoardBasedOnRules){
+TEST(RuleBasedGenerationAccessor, WillSetBoardBasedOnRules){
 	const int data_size=3;
 
 	MockRules deadRules;
 	MockRules livingRules;
 
-	GenerationAccessor accessor(livingRules, deadRules);
+	RuleBasedGenerationAccessor accessor(livingRules, deadRules);
 
 	Grid firstGen(boost::extents[data_size][data_size]);
 	Grid expectedGrid(boost::extents[data_size][data_size]);
@@ -91,13 +87,13 @@ TEST(GenerationAccessor, WillSetBoardBasedOnRules){
 	delete &response;
 }
 
-TEST(GenerationAccessor, CanValidateBoardCallCorrectRulesForMixed){
+TEST(RuleBasedGenerationAccessor, CanValidateBoardCallCorrectRulesForMixed){
 	const int data_size=3;
 
 	MockRules livingRules;
 	MockRules deadRules;
 
-	GenerationAccessor accessor(livingRules, deadRules);
+	RuleBasedGenerationAccessor accessor(livingRules, deadRules);
 
 	Grid firstGen(boost::extents[data_size][data_size]);
 	Grid expectedGrid(boost::extents[data_size][data_size]);
@@ -117,13 +113,13 @@ TEST(GenerationAccessor, CanValidateBoardCallCorrectRulesForMixed){
 	delete &response;
 }
 
-TEST(GenerationAccessor, WillApplyCorrectRulesForMixed){
+TEST(RuleBasedGenerationAccessor, WillApplyCorrectRulesForMixed){
 	const int data_size=3;
 
 	MockRules livingRules;
 	MockRules deadRules;
 
-	GenerationAccessor accessor(livingRules, deadRules);
+	RuleBasedGenerationAccessor accessor(livingRules, deadRules);
 
 	Grid firstGen(boost::extents[data_size][data_size]);
 	Grid expectedGrid(boost::extents[data_size][data_size]);

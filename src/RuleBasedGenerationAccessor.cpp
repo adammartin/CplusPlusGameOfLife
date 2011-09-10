@@ -1,6 +1,6 @@
 #include "rules.h"
 #include "Board.h"
-#include "GenerationAccessor.h"
+#include "RuleBasedGenerationAccessor.h"
 #include "boost/multi_array.hpp"
 #include <iostream>
 
@@ -8,13 +8,13 @@ using namespace std;
 using ::type_info;
 
 namespace GameOfLife {
-	GenerationAccessor::GenerationAccessor(Rules &livingRules, Rules &deadRules) :LivingRules(livingRules), DeadRules(deadRules) {
+	RuleBasedGenerationAccessor::RuleBasedGenerationAccessor(Rules &livingRules, Rules &deadRules) :LivingRules(livingRules), DeadRules(deadRules) {
 	}
 
-	GenerationAccessor::~GenerationAccessor() {
+	RuleBasedGenerationAccessor::~RuleBasedGenerationAccessor() {
 	}
 
-	Grid& GenerationAccessor::access(const Grid &grid){
+	Grid& RuleBasedGenerationAccessor::access(const Grid &grid){
 		int size = grid.size();
 		Board oldBoard(grid);
 		Grid *newGrid = new Grid(boost::extents[size][size]);

@@ -81,6 +81,45 @@ TEST(Board, CanNotGetCountOutOfBounds){
 	EXPECT_EQ(0, board.getNeighbors(0,3));
 }
 
+TEST(Board, CanBuildBlinker) {
+	Grid expected(boost::extents[40][40]);
+	expected[20][19] = true;
+	expected[20][20] = true;
+	expected[20][21] = true;
+
+	Board board;
+
+	EXPECT_EQ(expected, board.build(BLINKER));
+}
+
+TEST(Board, CanBuildToad) {
+	Grid expected(boost::extents[40][40]);
+	expected[20][19] = true;
+	expected[20][20] = true;
+	expected[20][21] = true;
+	expected[21][18] = true;
+	expected[21][19] = true;
+	expected[21][20] = true;
+
+	Board board;
+
+	EXPECT_EQ(expected, board.build(TOAD));
+}
+
+TEST(Board, CanBuildAcorn) {
+	Grid expected(boost::extents[40][40]);
+	expected[18][16] = true;
+	expected[19][18] = true;
+	expected[20][15] = true;
+	expected[20][16] = true;
+	expected[20][19] = true;
+	expected[20][20] = true;
+	expected[20][21] = true;
+
+	Board board;
+
+	EXPECT_EQ(expected, board.build(ACORN));
+}
 
 
 

@@ -2,13 +2,13 @@
 #define LINERENDERER_H_
 
 #include <string>
-#include <iostream.h>
+#include <iostream>
 
 using namespace std;
 
 class LineRenderer {
 public:
-	LineRenderer(){};
+	LineRenderer() :stream(cout){};
 	LineRenderer(ostream &otherstream) :stream(otherstream){};
 	virtual ~LineRenderer(){}
 	virtual void Render(const string &line){
