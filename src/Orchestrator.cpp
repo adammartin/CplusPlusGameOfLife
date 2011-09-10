@@ -8,9 +8,9 @@
 
 namespace GameOfLife {
 
-char formatCell(bool b) {
-  return b ? '*' : ' ';
-}
+char toChar(bool val){
+	return val? '*' : ' ';
+};
 
 Orchestrator::Orchestrator(GenerationAccessor &rAccessor, LineRenderer &rRenderer, Pattern pattern):accessor(rAccessor), renderer(rRenderer) {
 	Board board;
@@ -29,13 +29,9 @@ void Orchestrator::nextGeneration(){
 void Orchestrator::printBoard(){
 	for (Grid::iterator i = grid->begin(); i != grid->end(); i++) {
 		string line;
-		transform(i->begin(), i->end(), back_inserter(line), formatCell);
+		transform(i->begin(), i->end(), back_inserter(line), toChar);
 		renderer.Render(line);
 	}
 }
-
-char Orchestrator::toChar(bool val){
-	return val? 'x' : ' ';
-};
 
 } /* namespace GameOfLife */

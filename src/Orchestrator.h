@@ -13,7 +13,6 @@ public:
 	virtual ~Orchestrator();
 	void nextGeneration();
 private:
-	char toChar(bool val);
 	void printBoard();
 	Grid* grid;
 	GenerationAccessor &accessor;
