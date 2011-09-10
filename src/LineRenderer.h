@@ -2,20 +2,29 @@
 #define LINERENDERER_H_
 
 #include <string>
-#include <iostream>
+#include <curses.h>
 
 using namespace std;
 
 class LineRenderer {
 public:
-	LineRenderer() :stream(cout){};
-	LineRenderer(ostream &otherstream) :stream(otherstream){};
-	virtual ~LineRenderer(){}
-	virtual void Render(const string &line){
-		stream << line << endl;
+	LineRenderer(){
+		initscr();
 	};
-private:
-	ostream &stream;
+	virtual ~LineRenderer(){
+		endwin();
+	};
+	virtual void clearScreen(){
+		clear();
+	};
+	virtual void refreshScreen(){
+		refresh();
+	};
+	virtual void Render(const string &line){
+		const char *charLine = (char*)line.c_str();
+		printw(charLine);
+		printw("\n");
+	};
 };
 
 #endif /* LINERENDERER_H_ */

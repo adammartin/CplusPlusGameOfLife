@@ -8,7 +8,7 @@ using namespace std;
 
 typedef boost::multi_array<bool, 2> Grid;
 
-enum Pattern {BLINKER, TOAD, ACORN};
+enum Pattern {BLINKER =1, TOAD = 2, ACORN =3};
 
 namespace GameOfLife {
 	class Board {
@@ -22,29 +22,29 @@ namespace GameOfLife {
 		virtual ~Board(){};
 
 		Grid &build(Pattern pattern) {
-			Grid *newGrid = new Grid(boost::extents[40][40]);
+			Grid *newGrid = new Grid(boost::extents[30][30]);
 			switch(pattern){
 			case BLINKER:
-				(*newGrid)[20][19] = true;
-				(*newGrid)[20][20] = true;
-				(*newGrid)[20][21] = true;
+				(*newGrid)[15][14] = true;
+				(*newGrid)[15][15] = true;
+				(*newGrid)[15][16] = true;
 				break;
 			case TOAD:
-				(*newGrid)[20][19] = true;
-				(*newGrid)[20][20] = true;
-				(*newGrid)[20][21] = true;
-				(*newGrid)[21][18] = true;
-				(*newGrid)[21][19] = true;
-				(*newGrid)[21][20] = true;
+				(*newGrid)[15][14] = true;
+				(*newGrid)[15][15] = true;
+				(*newGrid)[15][16] = true;
+				(*newGrid)[16][13] = true;
+				(*newGrid)[16][14] = true;
+				(*newGrid)[16][15] = true;
 				break;
 			case ACORN:
-				(*newGrid)[18][16] = true;
-				(*newGrid)[19][18] = true;
-				(*newGrid)[20][15] = true;
-				(*newGrid)[20][16] = true;
-				(*newGrid)[20][19] = true;
-				(*newGrid)[20][20] = true;
-				(*newGrid)[20][21] = true;
+				(*newGrid)[13][11] = true;
+				(*newGrid)[14][13] = true;
+				(*newGrid)[15][10] = true;
+				(*newGrid)[15][11] = true;
+				(*newGrid)[15][14] = true;
+				(*newGrid)[15][15] = true;
+				(*newGrid)[15][16] = true;
 				break;
 			default:
 				break;

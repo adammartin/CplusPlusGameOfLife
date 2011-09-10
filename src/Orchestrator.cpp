@@ -22,16 +22,20 @@ Orchestrator::~Orchestrator() {
 }
 
 void Orchestrator::nextGeneration(){
+	Grid *oldGrid = grid;
 	printBoard();
-	grid = &accessor.access(*grid);
+	grid = &accessor.access(*oldGrid);
+	delete oldGrid;
 }
 
 void Orchestrator::printBoard(){
+	renderer.clearScreen();
 	for (Grid::iterator i = grid->begin(); i != grid->end(); i++) {
 		string line;
 		transform(i->begin(), i->end(), back_inserter(line), toChar);
 		renderer.Render(line);
 	}
+	renderer.refreshScreen();
 }
 
 } /* namespace GameOfLife */

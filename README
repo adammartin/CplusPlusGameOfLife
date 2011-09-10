@@ -7,3 +7,15 @@ googlemock (version 1.6.0)
 googletest (version 1.6.0)
 boost (1.47.0)
 ncurses (5.9)
+
+There are two distinct classes not under test:
+1) LineRenderer which hides classes I could not
+figure out how to mock.  Mainly this is to deal with
+ncurses which I cannot mock.
+2) Main which is primarly a spike.  I have classes I
+could pull out but I wanted to see if stuff really
+worked!
+
+To run compile and ./GameOfLife -help which will 
+give you the options and how to play.
+
