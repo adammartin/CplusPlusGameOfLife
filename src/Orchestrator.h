@@ -9,8 +9,15 @@ namespace GameOfLife {
 
 class Orchestrator {
 public:
-	Orchestrator(GenerationAccessor &accessor, LineRenderer &renderer, Pattern pattern);
+	Orchestrator(GenerationAccessor &rAccessor, LineRenderer &rRenderer, Pattern pattern);
 	virtual ~Orchestrator();
+	void nextGeneration();
+private:
+	char toChar(bool val);
+	void printBoard();
+	Grid* grid;
+	GenerationAccessor &accessor;
+	LineRenderer &renderer;
 };
 
 }
