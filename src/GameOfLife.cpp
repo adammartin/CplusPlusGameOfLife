@@ -22,7 +22,7 @@ int usage(){
 void runGame(Orchestrator &orchestrator, int generations){
 	for(int i = 0; i < generations; i++){
 		orchestrator.nextGeneration();
-		sleep(1);
+		usleep(100);
 	}
 }
 
