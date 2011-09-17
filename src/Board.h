@@ -4,9 +4,6 @@
 #include <boost/multi_array.hpp>
 #include <boost/shared_ptr.hpp>
 
-using namespace std;
-using namespace boost;
-
 typedef boost::multi_array<bool, 2> Grid;
 typedef boost::shared_ptr<Grid> GridPtr;
 

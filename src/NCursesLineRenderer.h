@@ -2,6 +2,7 @@
 #define NCURSESLINERENDERER_H_
 
 #include "LineRenderer.h"
+#include <string>
 
 namespace GameOfLife {
 
@@ -11,7 +12,7 @@ public:
 	virtual ~NCursesLineRenderer();
 	void clearScreen();
 	void refreshScreen();
-	void Render(const string &line);
+	void Render(const std::string &line);
 };
 
 } /* namespace GameOfLife */

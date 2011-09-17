@@ -1,5 +1,8 @@
 #include "LineRenderer.h"
-#include "gmock/gmock.h"
+#include <gmock/gmock.h>
+#include <string>
+
+using namespace std;
 
 class MockLineRenderer : public LineRenderer {
  public:

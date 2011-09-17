@@ -18,7 +18,7 @@ void NCursesLineRenderer::clearScreen(){
 void NCursesLineRenderer::refreshScreen(){
 	refresh();
 };
-void NCursesLineRenderer::Render(const string &line){
+void NCursesLineRenderer::Render(const std::string &line){
 	const char *charLine = (char*)line.c_str();
 	printw(charLine);
 	printw("\n");

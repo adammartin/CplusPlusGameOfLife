@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <vector>
 
+using namespace std;
+
 namespace GameOfLife {
 
 char toChar(bool val){
