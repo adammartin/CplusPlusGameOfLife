@@ -89,7 +89,7 @@ TEST(Board, CanBuildBlinker) {
 
 	Board board;
 
-	EXPECT_EQ(expected, board.build(BLINKER));
+	EXPECT_EQ(*expected, *board.build(BLINKER));
 }
 
 TEST(Board, CanBuildToad) {
@@ -103,7 +103,7 @@ TEST(Board, CanBuildToad) {
 
 	Board board;
 
-	EXPECT_EQ(expected, board.build(TOAD));
+	EXPECT_EQ(*expected, *board.build(TOAD));
 }
 
 TEST(Board, CanBuildAcorn) {
@@ -118,7 +118,7 @@ TEST(Board, CanBuildAcorn) {
 
 	Board board;
 
-	EXPECT_EQ(expected, board.build(ACORN));
+	EXPECT_EQ(*expected, *board.build(ACORN));
 }
 
 
