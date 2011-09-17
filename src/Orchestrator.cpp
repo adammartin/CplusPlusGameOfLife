@@ -4,7 +4,6 @@
 #include <string>
 #include <algorithm>
 #include <vector>
-#include <iostream>
 
 namespace GameOfLife {
 
@@ -22,7 +21,8 @@ Orchestrator::~Orchestrator() {
 
 void Orchestrator::nextGeneration(){
 	printBoard();
-	grid = GridPtr(&accessor.access(*grid.get()));
+	Grid &newGrid = accessor.access(*grid.get());
+	grid = GridPtr(&newGrid);
 }
 
 void Orchestrator::printBoard(){
