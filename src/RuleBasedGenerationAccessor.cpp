@@ -1,8 +1,7 @@
-#include "rules.h"
+#include "Rules.h"
 #include "Board.h"
 #include "RuleBasedGenerationAccessor.h"
-#include "boost/multi_array.hpp"
-#include <iostream>
+#include <boost/multi_array.hpp>
 
 using namespace std;
 using ::type_info;

@@ -1,10 +1,10 @@
 #ifndef RULEBASEDGENERATIONACCESSOR_H_
 #define RULEBASEDGENERATIONACCESSOR_H_
 
-#include "rules.h"
+#include "Rules.h"
 #include "GenerationAccessor.h"
 #include "Board.h"
-#include "boost/multi_array.hpp"
+#include <boost/multi_array.hpp>
 
 namespace GameOfLife {
 

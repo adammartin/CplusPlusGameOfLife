@@ -1,7 +1,7 @@
 #ifndef LIVINGRULES_H_
 #define LIVINGRULES_H_
 
-#include "rules.h"
+#include "Rules.h"
 
 class LivingRules: public Rules {
 public:

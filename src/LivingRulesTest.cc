@@ -1,6 +1,6 @@
-#include "rules.h"
+#include "Rules.h"
 #include "LivingRules.h"
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
 TEST(Rules, ApplyToLivingCells){
 	Rules* rules = new LivingRules;

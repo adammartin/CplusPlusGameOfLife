@@ -1,6 +1,6 @@
-#include "rules.h"
+#include "Rules.h"
 #include "Deadrules.h"
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
 TEST(Rules, ApplyToDeadCells) {
 	DeadRules rules;

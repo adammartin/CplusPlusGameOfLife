@@ -1,5 +1,5 @@
-#include "rules.h"
-#include "gmock/gmock.h"
+#include "Rules.h"
+#include <gmock/gmock.h>
 
 class MockRules : public Rules {
  public:

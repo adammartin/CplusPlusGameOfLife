@@ -1,7 +1,7 @@
 #ifndef DEADRULES_H_
 #define DEADRULES_H_
 
-#include "rules.h"
+#include "Rules.h"
 
 class DeadRules: public Rules {
 public:
