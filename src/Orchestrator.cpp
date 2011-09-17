@@ -23,8 +23,7 @@ Orchestrator::~Orchestrator() {
 
 void Orchestrator::nextGeneration(){
 	printBoard();
-	Grid &newGrid = accessor.access(*grid.get());
-	grid = GridPtr(&newGrid);
+	grid = GridPtr(&accessor.access(*grid.get()));
 }
 
 void Orchestrator::printBoard(){
