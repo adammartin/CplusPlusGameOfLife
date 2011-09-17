@@ -6,8 +6,17 @@ using namespace std;
 using namespace boost;
 
 namespace GameOfLife {
-	short Board::validPosition(const short index){
-		short length = boardData.size();
+	short Board::validRow(const short index){
+		short length = boardData.shape()[0];
+		if(index < 0) {
+			return 0;
+		} else if (index >= length){
+			return length-1;
+		}
+		return index;
+	};
+	short Board::validColumn(const short index){
+		short length = boardData.shape()[1];
 		if(index < 0) {
 			return 0;
 		} else if (index >= length){
@@ -27,7 +36,7 @@ namespace GameOfLife {
 	};
 
 	GridPtr Board::build(Pattern pattern) {
-		GridPtr newGrid(new Grid(boost::extents[30][30]));
+		GridPtr newGrid(new Grid(boost::extents[30][60]));
 		switch(pattern){
 		case BLINKER:
 			(*newGrid)[15][14] = true;
@@ -43,13 +52,13 @@ namespace GameOfLife {
 			(*newGrid)[16][15] = true;
 			break;
 		case ACORN:
-			(*newGrid)[13][11] = true;
-			(*newGrid)[14][13] = true;
-			(*newGrid)[15][10] = true;
-			(*newGrid)[15][11] = true;
-			(*newGrid)[15][14] = true;
-			(*newGrid)[15][15] = true;
-			(*newGrid)[15][16] = true;
+			(*newGrid)[13][26] = true;
+			(*newGrid)[14][28] = true;
+			(*newGrid)[15][25] = true;
+			(*newGrid)[15][26] = true;
+			(*newGrid)[15][29] = true;
+			(*newGrid)[15][30] = true;
+			(*newGrid)[15][31] = true;
 			break;
 		default:
 			break;
@@ -59,17 +68,14 @@ namespace GameOfLife {
 
 	unsigned short Board::getNeighbors(unsigned short row, unsigned short column){
 		unsigned short count = 0;
-		for(short rowPos = validPosition(row-1); rowPos <= validPosition(row+1); rowPos++){
-			for(short columnPos = validPosition(column-1); columnPos <= validPosition(column+1); columnPos++){
+		for(short rowPos = validRow(row-1); rowPos <= validRow(row+1); rowPos++){
+			for(short columnPos = validColumn(column-1); columnPos <= validColumn(column+1); columnPos++){
 				count += isAlive(rowPos, columnPos) && !(rowPos == row && columnPos == column)? 1 : 0;
 			}
 		}
 		return count;
 	};
 
-	unsigned short Board::size() const {
-		return boardData.size();
-	};
 	bool Board::operator==(const Board &other) const {
 		return boardData == other.boardData;
 	}

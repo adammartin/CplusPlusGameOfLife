@@ -7,7 +7,7 @@
 typedef boost::multi_array<bool, 2> Grid;
 typedef boost::shared_ptr<Grid> GridPtr;
 
-enum Pattern {BLINKER =1, TOAD = 2, ACORN =3};
+enum Pattern {BLINKER=1, TOAD=2, ACORN=3};
 
 namespace GameOfLife {
 	class Board {
@@ -17,13 +17,13 @@ namespace GameOfLife {
 		virtual ~Board(){};
 		GridPtr build(Pattern pattern);
 		unsigned short getNeighbors(unsigned short row, unsigned short column);
-		unsigned short size() const;
 		bool operator==(const Board &other) const;
 		bool operator!=(const Board &other) const;
 
 	private:
 		const Grid &boardData;
-		short validPosition(const short index);
+		short validRow(const short index);
+		short validColumn(const short index);
 		bool isAlive(unsigned short row, unsigned short column);
 	};
 }

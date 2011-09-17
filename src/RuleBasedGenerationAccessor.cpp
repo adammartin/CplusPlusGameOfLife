@@ -14,13 +14,13 @@ namespace GameOfLife {
 	}
 
 	Grid& RuleBasedGenerationAccessor::access(const Grid &grid){
-		int size = grid.size();
+		const Grid::size_type *shape = grid.shape();
 		Board oldBoard(grid);
-		Grid *newGrid = new Grid(boost::extents[size][size]);
-		for(short x = 0; x < size; x++){
-			for(short y = 0; y < size; y++){
-				unsigned short neighbors = oldBoard.getNeighbors(x, y);
-				(*newGrid)[x][y] = grid[x][y] ? LivingRules.Apply(neighbors) : DeadRules.Apply(neighbors);
+		Grid *newGrid = new Grid(boost::extents[shape[0]][shape[1]]);
+		for(short row = 0; row < shape[0]; row++){
+			for(short column = 0; column < shape[1]; column++){
+				unsigned short neighbors = oldBoard.getNeighbors(row, column);
+				(*newGrid)[row][column] = grid[row][column] ? LivingRules.Apply(neighbors) : DeadRules.Apply(neighbors);
 			}
 		}
 

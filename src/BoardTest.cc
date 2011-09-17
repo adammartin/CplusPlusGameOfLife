@@ -3,13 +3,6 @@
 
 using namespace GameOfLife;
 
-TEST(Board, CanGetBoardSize){
-	Grid base(boost::extents[3][3]);
-	Board board(base);
-
-	EXPECT_EQ(3, board.size());
-}
-
 TEST(Board, EqualOperatorIsBasedOnInternalGrids){
 	Grid base(boost::extents[3][3]);
 	Grid base2(boost::extents[3][3]);
@@ -82,7 +75,7 @@ TEST(Board, CanNotGetCountOutOfBounds){
 }
 
 TEST(Board, CanBuildBlinker) {
-	GridPtr expected(new Grid(boost::extents[30][30]));
+	GridPtr expected(new Grid(boost::extents[30][60]));
 	(*expected)[15][14] = true;
 	(*expected)[15][15] = true;
 	(*expected)[15][16] = true;
@@ -93,7 +86,7 @@ TEST(Board, CanBuildBlinker) {
 }
 
 TEST(Board, CanBuildToad) {
-	GridPtr expected(new Grid(boost::extents[30][30]));
+	GridPtr expected(new Grid(boost::extents[30][60]));
 	(*expected)[15][14] = true;
 	(*expected)[15][15] = true;
 	(*expected)[15][16] = true;
@@ -107,14 +100,14 @@ TEST(Board, CanBuildToad) {
 }
 
 TEST(Board, CanBuildAcorn) {
-	GridPtr expected(new Grid(boost::extents[30][30]));
-	(*expected)[13][11] = true;
-	(*expected)[14][13] = true;
-	(*expected)[15][10] = true;
-	(*expected)[15][11] = true;
-	(*expected)[15][14] = true;
-	(*expected)[15][15] = true;
-	(*expected)[15][16] = true;
+	GridPtr expected(new Grid(boost::extents[30][60]));
+	(*expected)[13][26] = true;
+	(*expected)[14][28] = true;
+	(*expected)[15][25] = true;
+	(*expected)[15][26] = true;
+	(*expected)[15][29] = true;
+	(*expected)[15][30] = true;
+	(*expected)[15][31] = true;
 
 	Board board;
 

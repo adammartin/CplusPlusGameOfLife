@@ -15,9 +15,9 @@ using namespace std;
 TEST(Orchestrator, CanRenderGenerationProperly){
 
 	Board board;
-	string blankLine = "                              ";
-	string blinkLine = "              ***             ";
-	Grid *resultGrid = new Grid(boost::extents[30][30]);
+	string blankLine = "                                                            ";
+	string blinkLine = "              ***                                           ";
+	Grid *resultGrid = new Grid(boost::extents[30][60]);
 	(*resultGrid)[14][15] = true;
 	(*resultGrid)[15][15] = true;
 	(*resultGrid)[16][15] = true;
