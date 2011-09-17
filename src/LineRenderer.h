@@ -8,23 +8,11 @@ using namespace std;
 
 class LineRenderer {
 public:
-	LineRenderer(){
-		initscr();
-	};
-	virtual ~LineRenderer(){
-		endwin();
-	};
-	virtual void clearScreen(){
-		clear();
-	};
-	virtual void refreshScreen(){
-		refresh();
-	};
-	virtual void Render(const string &line){
-		const char *charLine = (char*)line.c_str();
-		printw(charLine);
-		printw("\n");
-	};
+	LineRenderer(){};
+	virtual ~LineRenderer(){};
+	virtual void clearScreen(){};
+	virtual void refreshScreen(){};
+	virtual void Render(const string &line){};
 };
 
 #endif /* LINERENDERER_H_ */

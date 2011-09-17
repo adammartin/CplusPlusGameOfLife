@@ -4,6 +4,7 @@
 #include "RuleBasedGenerationAccessor.h"
 #include "LivingRules.h"
 #include "DeadRules.h"
+#include "NCursesLineRenderer.h"
 #include <string>
 #include <map>
 #include <iostream>
@@ -30,7 +31,7 @@ int runGame(Pattern pattern, int generations){
 	LivingRules livingRules;
 	DeadRules deadRules;
 	RuleBasedGenerationAccessor accessor(livingRules, deadRules);
-	LineRenderer renderer;
+	NCursesLineRenderer renderer;
 	Orchestrator orchestrator(accessor, renderer, pattern);
 	runGame(orchestrator, generations);
 	return 0;
