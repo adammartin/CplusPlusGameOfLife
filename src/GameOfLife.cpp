@@ -22,7 +22,7 @@ int usage(){
 void runGame(Orchestrator &orchestrator, int generations){
 	for(int i = 0; i < generations; i++){
 		orchestrator.nextGeneration();
-		usleep(100);
+		usleep(10000);
 	}
 }
 
@@ -33,7 +33,6 @@ int runGame(Pattern pattern, int generations){
 	LineRenderer renderer;
 	Orchestrator orchestrator(accessor, renderer, pattern);
 	runGame(orchestrator, generations);
-	renderer.~LineRenderer();
 	return 0;
 }
 

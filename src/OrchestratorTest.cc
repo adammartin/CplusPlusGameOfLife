@@ -28,7 +28,7 @@ TEST(Orchestrator, CanRenderGenerationProperly){
 	EXPECT_CALL(renderer, clearScreen()).Times(Exactly(1));
 	EXPECT_CALL(renderer, Render(blankLine)).Times(Exactly(29));
 	EXPECT_CALL(renderer, Render(blinkLine)).Times(Exactly(1));
-	EXPECT_CALL(accessor, access(board.build(BLINKER))).Times(Exactly(1)).WillRepeatedly(ReturnRef(resultGrid));
+	EXPECT_CALL(accessor, access(*board.build(BLINKER).get())).Times(Exactly(1)).WillRepeatedly(ReturnRef(resultGrid));
 	EXPECT_CALL(renderer, refreshScreen()).Times(Exactly(1));
 
 	orchestrator.nextGeneration();

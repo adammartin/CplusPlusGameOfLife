@@ -14,7 +14,7 @@ public:
 	void nextGeneration();
 private:
 	void printBoard();
-	Grid* grid;
+	GridPtr grid;
 	GenerationAccessor &accessor;
 	LineRenderer &renderer;
 };

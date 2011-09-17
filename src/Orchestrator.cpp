@@ -14,18 +14,15 @@ char toChar(bool val){
 
 Orchestrator::Orchestrator(GenerationAccessor &rAccessor, LineRenderer &rRenderer, Pattern pattern):accessor(rAccessor), renderer(rRenderer) {
 	Board board;
-	Grid &rGrid = board.build(pattern);
-	grid = &rGrid;
+	grid = board.build(pattern);
 }
 
 Orchestrator::~Orchestrator() {
 }
 
 void Orchestrator::nextGeneration(){
-	Grid *oldGrid = grid;
 	printBoard();
-	grid = &accessor.access(*oldGrid);
-	delete oldGrid;
+	grid = GridPtr(&accessor.access(*grid.get()));
 }
 
 void Orchestrator::printBoard(){

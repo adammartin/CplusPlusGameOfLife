@@ -1,12 +1,15 @@
 #ifndef BOARD_H_
 #define BOARD_H_
 
-#include "boost/multi_array.hpp"
+#include <boost/multi_array.hpp>
+#include <boost/shared_ptr.hpp>
 #include <iostream>
 
 using namespace std;
+using namespace boost;
 
 typedef boost::multi_array<bool, 2> Grid;
+typedef boost::shared_ptr<Grid> GridPtr;
 
 enum Pattern {BLINKER =1, TOAD = 2, ACORN =3};
 
@@ -21,8 +24,8 @@ namespace GameOfLife {
 
 		virtual ~Board(){};
 
-		Grid &build(Pattern pattern) {
-			Grid *newGrid = new Grid(boost::extents[30][30]);
+		GridPtr build(Pattern pattern) {
+			GridPtr newGrid(new Grid(boost::extents[30][30]));
 			switch(pattern){
 			case BLINKER:
 				(*newGrid)[15][14] = true;
@@ -49,7 +52,7 @@ namespace GameOfLife {
 			default:
 				break;
 			}
-			return *newGrid;
+			return newGrid;
 		}
 
 		unsigned short getNeighbors(unsigned short row, unsigned short column){

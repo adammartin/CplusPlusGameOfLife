@@ -82,10 +82,10 @@ TEST(Board, CanNotGetCountOutOfBounds){
 }
 
 TEST(Board, CanBuildBlinker) {
-	Grid expected(boost::extents[30][30]);
-	expected[15][14] = true;
-	expected[15][15] = true;
-	expected[15][16] = true;
+	GridPtr expected(new Grid(boost::extents[30][30]));
+	(*expected)[15][14] = true;
+	(*expected)[15][15] = true;
+	(*expected)[15][16] = true;
 
 	Board board;
 
@@ -93,13 +93,13 @@ TEST(Board, CanBuildBlinker) {
 }
 
 TEST(Board, CanBuildToad) {
-	Grid expected(boost::extents[30][30]);
-	expected[15][14] = true;
-	expected[15][15] = true;
-	expected[15][16] = true;
-	expected[16][13] = true;
-	expected[16][14] = true;
-	expected[16][15] = true;
+	GridPtr expected(new Grid(boost::extents[30][30]));
+	(*expected)[15][14] = true;
+	(*expected)[15][15] = true;
+	(*expected)[15][16] = true;
+	(*expected)[16][13] = true;
+	(*expected)[16][14] = true;
+	(*expected)[16][15] = true;
 
 	Board board;
 
@@ -107,14 +107,14 @@ TEST(Board, CanBuildToad) {
 }
 
 TEST(Board, CanBuildAcorn) {
-	Grid expected(boost::extents[30][30]);
-	expected[13][11] = true;
-	expected[14][13] = true;
-	expected[15][10] = true;
-	expected[15][11] = true;
-	expected[15][14] = true;
-	expected[15][15] = true;
-	expected[15][16] = true;
+	GridPtr expected(new Grid(boost::extents[30][30]));
+	(*expected)[13][11] = true;
+	(*expected)[14][13] = true;
+	(*expected)[15][10] = true;
+	(*expected)[15][11] = true;
+	(*expected)[15][14] = true;
+	(*expected)[15][15] = true;
+	(*expected)[15][16] = true;
 
 	Board board;
 
