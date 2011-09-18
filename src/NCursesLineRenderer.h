@@ -6,14 +6,14 @@
 
 namespace GameOfLife {
 
-class NCursesLineRenderer: public LineRenderer {
-public:
-	NCursesLineRenderer();
-	virtual ~NCursesLineRenderer();
-	void clearScreen();
-	void refreshScreen();
-	void Render(const std::string &line);
-};
+	class NCursesLineRenderer: public LineRenderer {
+	public:
+		NCursesLineRenderer();
+		virtual ~NCursesLineRenderer();
+		void clearScreen();
+		void refreshScreen();
+		void Render(const std::string &line);
+	};
 
-} /* namespace GameOfLife */
+	} /* namespace GameOfLife */
 #endif /* NCURSESLINERENDERER_H_ */

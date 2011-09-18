@@ -1,9 +1,9 @@
-#include "board.h"
+#include "board/board.h"
 #include "gtest/gtest.h"
 #include "Orchestrator.h"
-#include "RuleBasedGenerationAccessor.h"
-#include "LivingRules.h"
-#include "DeadRules.h"
+#include "board/RuleBasedGenerationAccessor.h"
+#include "board/rules/LivingRules.h"
+#include "board/rules/DeadRules.h"
 #include "NCursesLineRenderer.h"
 #include <string>
 #include <map>

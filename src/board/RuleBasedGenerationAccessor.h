@@ -1,7 +1,7 @@
 #ifndef RULEBASEDGENERATIONACCESSOR_H_
 #define RULEBASEDGENERATIONACCESSOR_H_
 
-#include "Rules.h"
+#include "rules/Rules.h"
 #include "GenerationAccessor.h"
 #include "Board.h"
 #include <boost/multi_array.hpp>

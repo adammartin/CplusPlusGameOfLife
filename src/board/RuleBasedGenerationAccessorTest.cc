@@ -1,6 +1,6 @@
 #include "RuleBasedGenerationAccessor.h"
 #include "Board.h"
-#include "MockRules.h"
+#include "rules/MockRules.h"
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 

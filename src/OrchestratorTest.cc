@@ -1,10 +1,10 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 #include "MockLineRenderer.h"
-#include "MockGenerationAccessor.h"
-#include "GenerationAccessor.h"
+#include "board/MockGenerationAccessor.h"
+#include "board/GenerationAccessor.h"
 #include "Orchestrator.h"
-#include "Board.h"
+#include "board/Board.h"
 #include <string>
 
 using ::testing::Exactly;

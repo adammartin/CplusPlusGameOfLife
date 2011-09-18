@@ -1,4 +1,4 @@
-#include "Rules.h"
+#include "rules/Rules.h"
 #include "Board.h"
 #include "RuleBasedGenerationAccessor.h"
 #include <boost/multi_array.hpp>

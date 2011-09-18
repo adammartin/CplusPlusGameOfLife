@@ -4,23 +4,23 @@
 
 namespace GameOfLife {
 
-NCursesLineRenderer::NCursesLineRenderer() {
-	initscr();
-}
+	NCursesLineRenderer::NCursesLineRenderer() {
+		initscr();
+	}
 
-NCursesLineRenderer::~NCursesLineRenderer() {
-	endwin();
-}
+	NCursesLineRenderer::~NCursesLineRenderer() {
+		endwin();
+	}
 
-void NCursesLineRenderer::clearScreen(){
-	clear();
-};
-void NCursesLineRenderer::refreshScreen(){
-	refresh();
-};
-void NCursesLineRenderer::Render(const std::string &line){
-	const char *charLine = (char*)line.c_str();
-	printw(charLine);
-	printw("\n");
-};
+	void NCursesLineRenderer::clearScreen(){
+		clear();
+	};
+	void NCursesLineRenderer::refreshScreen(){
+		refresh();
+	};
+	void NCursesLineRenderer::Render(const std::string &line){
+		const char *charLine = (char*)line.c_str();
+		printw(charLine);
+		printw("\n");
+	};
 } /* namespace GameOfLife */

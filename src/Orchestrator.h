@@ -2,22 +2,22 @@
 #define ORCHESTRATOR_H_
 
 #include "LineRenderer.h"
-#include "GenerationAccessor.h"
-#include "Board.h"
+#include "board/GenerationAccessor.h"
+#include "board/Board.h"
 
 namespace GameOfLife {
 
-class Orchestrator {
-public:
-	Orchestrator(GenerationAccessor &rAccessor, LineRenderer &rRenderer, Pattern pattern);
-	virtual ~Orchestrator();
-	void nextGeneration();
-private:
-	void printBoard();
-	GridPtr grid;
-	GenerationAccessor &accessor;
-	LineRenderer &renderer;
-};
+	class Orchestrator {
+	public:
+		Orchestrator(GenerationAccessor &rAccessor, LineRenderer &rRenderer, Pattern pattern);
+		virtual ~Orchestrator();
+		void nextGeneration();
+	private:
+		void printBoard();
+		GridPtr grid;
+		GenerationAccessor &accessor;
+		LineRenderer &renderer;
+	};
 
 }
 #endif /* ORCHESTRATOR_H_ */
