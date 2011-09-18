@@ -8,7 +8,7 @@ namespace GameOfLife {
 class MockGenerationAccessor : public GenerationAccessor {
  public:
   MOCK_METHOD1(access,
-      Grid&(const Grid &grid));
+      GridPtr(const Grid &grid));
 };
 
 }  // namespace GameOfLife

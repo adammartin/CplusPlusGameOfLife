@@ -39,9 +39,9 @@ int runGame(Pattern pattern, int generations){
 
 map<string, Pattern>& buildPatterns(){
 	map<string, Pattern> *patterns = new map<string, Pattern>();
-	patterns->insert(make_pair(string("BLINKER"), BLINKER));
-	patterns->insert(make_pair(string("TOAD"), TOAD));
-	patterns->insert(make_pair(string("ACORN"), ACORN));
+	(*patterns)["BLINKER"] = BLINKER;
+	(*patterns)["TOAD"] = TOAD;
+	(*patterns)["ACORN"] = ACORN;
 	return *patterns;
 }
 

@@ -36,7 +36,7 @@ namespace GameOfLife {
 	};
 
 	GridPtr Board::build(Pattern pattern) {
-		GridPtr newGrid(new Grid(boost::extents[30][60]));
+		GridPtr newGrid(new Grid(boost::extents[30][120]));
 		switch(pattern){
 		case BLINKER:
 			(*newGrid)[15][14] = true;

@@ -21,11 +21,9 @@ TEST(RuleBasedGenerationAccessor, CanValidateBoardIsAllDead){
 
 	EXPECT_CALL(deadRules, Apply(0)).Times(Exactly(9)).WillRepeatedly(Return(false));
 
-	const Grid& response = accessor.access(firstGen);
+	const GridPtr response = accessor.access(firstGen);
 
-	EXPECT_EQ(expectedGrid, response);
-
-	delete &response;
+	EXPECT_EQ(expectedGrid, *response);
 }
 
 TEST(RuleBasedGenerationAccessor, CanValidateBoardCallCorrectRulesForAllAlive){
@@ -49,11 +47,9 @@ TEST(RuleBasedGenerationAccessor, CanValidateBoardCallCorrectRulesForAllAlive){
 	EXPECT_CALL(livingRules, Apply(5)).Times(Exactly(4)).WillRepeatedly(Return(false));
 	EXPECT_CALL(livingRules, Apply(8)).Times(Exactly(1)).WillRepeatedly(Return(false));
 
-	const Grid& response = accessor.access(firstGen);
+	const GridPtr response = accessor.access(firstGen);
 
-	EXPECT_EQ(expectedGrid, response);
-
-	delete &response;
+	EXPECT_EQ(expectedGrid, *response);
 }
 
 TEST(RuleBasedGenerationAccessor, WillSetBoardBasedOnRules){
@@ -80,11 +76,9 @@ TEST(RuleBasedGenerationAccessor, WillSetBoardBasedOnRules){
 	EXPECT_CALL(livingRules, Apply(8)).Times(Exactly(1)).WillRepeatedly(Return(true));
 
 
-	const Grid& response = accessor.access(firstGen);
+	const GridPtr response = accessor.access(firstGen);
 
-	EXPECT_EQ(expectedGrid, response);
-
-	delete &response;
+	EXPECT_EQ(expectedGrid, *response);
 }
 
 TEST(RuleBasedGenerationAccessor, CanValidateBoardCallCorrectRulesForMixed){
@@ -106,11 +100,9 @@ TEST(RuleBasedGenerationAccessor, CanValidateBoardCallCorrectRulesForMixed){
 	EXPECT_CALL(deadRules, Apply(2)).Times(Exactly(2)).WillRepeatedly(Return(false));
 	EXPECT_CALL(livingRules, Apply(1)).Times(Exactly(2)).WillRepeatedly(Return(false));
 
-	const Grid& response = accessor.access(firstGen);
+	const GridPtr response = accessor.access(firstGen);
 
-	EXPECT_EQ(expectedGrid, response);
-
-	delete &response;
+	EXPECT_EQ(expectedGrid, *response);
 }
 
 TEST(RuleBasedGenerationAccessor, WillApplyCorrectRulesForMixed){
@@ -136,11 +128,9 @@ TEST(RuleBasedGenerationAccessor, WillApplyCorrectRulesForMixed){
 	EXPECT_CALL(deadRules, Apply(2)).Times(Exactly(2)).WillRepeatedly(Return(false));
 	EXPECT_CALL(livingRules, Apply(1)).Times(Exactly(2)).WillRepeatedly(Return(false));
 
-	const Grid& response = accessor.access(firstGen);
+	const GridPtr response = accessor.access(firstGen);
 
-	EXPECT_EQ(expectedGrid, response);
-
-	delete &response;
+	EXPECT_EQ(expectedGrid, *response);
 }
 
 

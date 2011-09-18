@@ -75,7 +75,7 @@ TEST(Board, CanNotGetCountOutOfBounds){
 }
 
 TEST(Board, CanBuildBlinker) {
-	GridPtr expected(new Grid(boost::extents[30][60]));
+	GridPtr expected(new Grid(boost::extents[30][120]));
 	(*expected)[15][14] = true;
 	(*expected)[15][15] = true;
 	(*expected)[15][16] = true;
@@ -86,7 +86,7 @@ TEST(Board, CanBuildBlinker) {
 }
 
 TEST(Board, CanBuildToad) {
-	GridPtr expected(new Grid(boost::extents[30][60]));
+	GridPtr expected(new Grid(boost::extents[30][120]));
 	(*expected)[15][14] = true;
 	(*expected)[15][15] = true;
 	(*expected)[15][16] = true;
@@ -100,7 +100,7 @@ TEST(Board, CanBuildToad) {
 }
 
 TEST(Board, CanBuildAcorn) {
-	GridPtr expected(new Grid(boost::extents[30][60]));
+	GridPtr expected(new Grid(boost::extents[30][120]));
 	(*expected)[13][26] = true;
 	(*expected)[14][28] = true;
 	(*expected)[15][25] = true;

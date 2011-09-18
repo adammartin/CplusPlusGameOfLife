@@ -8,16 +8,16 @@
 #include <string>
 
 using ::testing::Exactly;
-using ::testing::ReturnRef;
+using ::testing::Return;
 using namespace GameOfLife;
 using namespace std;
 
 TEST(Orchestrator, CanRenderGenerationProperly){
 
 	Board board;
-	string blankLine = "                                                            ";
-	string blinkLine = "              ***                                           ";
-	Grid *resultGrid = new Grid(boost::extents[30][60]);
+	string blankLine = "                                                                                                                        ";
+	string blinkLine = "              ***                                                                                                       ";
+	GridPtr resultGrid(new Grid(boost::extents[30][60]));
 	(*resultGrid)[14][15] = true;
 	(*resultGrid)[15][15] = true;
 	(*resultGrid)[16][15] = true;
@@ -31,7 +31,7 @@ TEST(Orchestrator, CanRenderGenerationProperly){
 	EXPECT_CALL(renderer, clearScreen()).Times(Exactly(1));
 	EXPECT_CALL(renderer, Render(blankLine)).Times(Exactly(29));
 	EXPECT_CALL(renderer, Render(blinkLine)).Times(Exactly(1));
-	EXPECT_CALL(accessor, access(blinker)).Times(Exactly(1)).WillRepeatedly(ReturnRef(*resultGrid));
+	EXPECT_CALL(accessor, access(blinker)).Times(Exactly(1)).WillRepeatedly(Return(resultGrid));
 	EXPECT_CALL(renderer, refreshScreen()).Times(Exactly(1));
 
 	orchestrator.nextGeneration();

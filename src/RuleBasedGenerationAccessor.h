@@ -12,7 +12,7 @@ namespace GameOfLife {
 	public:
 		RuleBasedGenerationAccessor(Rules &livingRules, Rules &deadRules);
 		virtual ~RuleBasedGenerationAccessor();
-		virtual Grid& access(const Grid &grid);
+		virtual GridPtr access(const Grid &grid);
 	private:
 		Rules &LivingRules;
 		Rules &DeadRules;
