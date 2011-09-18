@@ -16,14 +16,14 @@ using namespace GameOfLife;
 int usage(){
 	cout << "-help: help message" << endl;
 	cout << "-test: run tests" << endl;
-	cout << "[BLINKER | TOAD | ACORN] NUMBER_OF_GENERATIONS: initial pattern to start with" << endl;
+	cout << "[BLINKER | TOAD | ACORN | LINE | GOSPER_GUN] NUMBER_OF_GENERATIONS: initial pattern to start with" << endl;
 	return 0;
 }
 
 void runGame(Orchestrator &orchestrator, int generations){
 	for(int i = 0; i < generations; i++){
 		orchestrator.nextGeneration();
-		usleep(10000);
+		usleep(100000);
 	}
 }
 
@@ -42,6 +42,8 @@ map<string, Pattern>& buildPatterns(){
 	(*patterns)["BLINKER"] = BLINKER;
 	(*patterns)["TOAD"] = TOAD;
 	(*patterns)["ACORN"] = ACORN;
+	(*patterns)["LINE"] = LINE;
+	(*patterns)["GOSPER_GUN"] = GOSPER_GUN;
 	return *patterns;
 }
 

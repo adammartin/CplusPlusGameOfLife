@@ -114,5 +114,101 @@ TEST(Board, CanBuildAcorn) {
 	EXPECT_EQ(*expected, *board.build(ACORN));
 }
 
+TEST(Board, CanBuildGosperGun) {
+	GridPtr expected(new Grid(boost::extents[30][120]));
+	(*expected)[6][2] = true;
+	(*expected)[6][3] = true;
+	(*expected)[7][2] = true;
+	(*expected)[7][3] = true;
+
+	(*expected)[6][12] = true;
+	(*expected)[7][12] = true;
+	(*expected)[8][12] = true;
+
+	(*expected)[5][13] = true;
+	(*expected)[9][13] = true;
+
+	(*expected)[4][14] = true;
+	(*expected)[4][15] = true;
+	(*expected)[10][14] = true;
+	(*expected)[10][15] = true;
+
+	(*expected)[7][16] = true;
+
+	(*expected)[5][17] = true;
+	(*expected)[9][17] = true;
+
+	(*expected)[6][18] = true;
+	(*expected)[7][18] = true;
+	(*expected)[8][18] = true;
+
+	(*expected)[7][19] = true;
+
+	(*expected)[4][22] = true;
+	(*expected)[5][22] = true;
+	(*expected)[6][22] = true;
+	(*expected)[4][23] = true;
+	(*expected)[5][23] = true;
+	(*expected)[6][23] = true;
+
+	(*expected)[3][24] = true;
+	(*expected)[7][24] = true;
+
+	(*expected)[2][26] = true;
+	(*expected)[3][26] = true;
+	(*expected)[7][26] = true;
+	(*expected)[8][26] = true;
+
+	(*expected)[4][36] = true;
+	(*expected)[5][36] = true;
+	(*expected)[4][37] = true;
+	(*expected)[5][37] = true;
+
+	Board board;
+
+	EXPECT_EQ(*expected, *board.build(GOSPER_GUN));
+}
+
+
+TEST(Board, CanBuildLine) {
+	GridPtr expected(new Grid(boost::extents[30][120]));
+	(*expected)[14][41] = true;
+	(*expected)[14][42] = true;
+	(*expected)[14][43] = true;
+	(*expected)[14][44] = true;
+	(*expected)[14][45] = true;
+	(*expected)[14][46] = true;
+	(*expected)[14][47] = true;
+	(*expected)[14][48] = true;
+
+	(*expected)[14][50] = true;
+	(*expected)[14][51] = true;
+	(*expected)[14][52] = true;
+	(*expected)[14][53] = true;
+	(*expected)[14][54] = true;
+
+	(*expected)[14][58] = true;
+	(*expected)[14][59] = true;
+	(*expected)[14][60] = true;
+
+	(*expected)[14][67] = true;
+	(*expected)[14][68] = true;
+	(*expected)[14][69] = true;
+	(*expected)[14][70] = true;
+	(*expected)[14][71] = true;
+	(*expected)[14][72] = true;
+	(*expected)[14][73] = true;
+
+	(*expected)[14][75] = true;
+	(*expected)[14][76] = true;
+	(*expected)[14][77] = true;
+	(*expected)[14][78] = true;
+	(*expected)[14][79] = true;
+
+	Board board;
+
+	EXPECT_EQ(*expected, *board.build(LINE));
+}
+
 
 

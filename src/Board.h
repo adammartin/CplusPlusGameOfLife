@@ -7,7 +7,7 @@
 typedef boost::multi_array<bool, 2> Grid;
 typedef boost::shared_ptr<Grid> GridPtr;
 
-enum Pattern {BLINKER=1, TOAD=2, ACORN=3};
+enum Pattern {BLINKER=1, TOAD=2, ACORN=3, LINE=4, GOSPER_GUN=5};
 
 namespace GameOfLife {
 	class Board {
