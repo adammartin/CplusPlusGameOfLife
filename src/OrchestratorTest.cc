@@ -6,9 +6,13 @@
 #include "Orchestrator.h"
 #include "board/Board.h"
 #include <string>
+#include <boost/shared_ptr.hpp>
+
+typedef boost::shared_ptr<GameOfLife::MockGenerationAccessor> MockGenAccessorPtr;
 
 using ::testing::Exactly;
 using ::testing::Return;
+using ::testing::Pointee;
 using namespace GameOfLife;
 using namespace std;
 
@@ -23,15 +27,15 @@ TEST(Orchestrator, CanRenderGenerationProperly){
 	(*resultGrid)[16][15] = true;
 
 	MockLineRenderer renderer;
-	MockGenerationAccessor accessor;
-	Orchestrator orchestrator(accessor, renderer, BLINKER);
+	MockGenAccessorPtr accessorPtr(new MockGenerationAccessor());
+	Orchestrator orchestrator(accessorPtr, renderer, BLINKER);
 	GridPtr gPointer = board.build(BLINKER);
 	Grid &blinker = *(gPointer.get());
 
 	EXPECT_CALL(renderer, clearScreen()).Times(Exactly(1));
 	EXPECT_CALL(renderer, Render(blankLine)).Times(Exactly(29));
 	EXPECT_CALL(renderer, Render(blinkLine)).Times(Exactly(1));
-	EXPECT_CALL(accessor, access(blinker)).Times(Exactly(1)).WillRepeatedly(Return(resultGrid));
+	EXPECT_CALL(*accessorPtr, access(blinker)).Times(Exactly(1)).WillRepeatedly(Return(resultGrid));
 	EXPECT_CALL(renderer, refreshScreen()).Times(Exactly(1));
 
 	orchestrator.nextGeneration();

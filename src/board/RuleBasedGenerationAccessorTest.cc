@@ -1,8 +1,11 @@
 #include "RuleBasedGenerationAccessor.h"
 #include "Board.h"
 #include "rules/MockRules.h"
-#include "gtest/gtest.h"
-#include "gmock/gmock.h"
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
+#include <boost/shared_ptr.hpp>
+
+typedef boost::shared_ptr<GameOfLife::MockRules> MockRulesPtr;
 
 using ::testing::Exactly;
 using ::testing::Return;
@@ -11,15 +14,15 @@ using namespace GameOfLife;
 TEST(RuleBasedGenerationAccessor, CanValidateBoardIsAllDead){
 	const int data_size=3;
 
-	MockRules livingRules;
-	MockRules deadRules;
+	MockRulesPtr livingRules(new MockRules());
+	MockRulesPtr deadRules(new MockRules());
 
 	RuleBasedGenerationAccessor accessor(livingRules, deadRules);
 
 	Grid firstGen(boost::extents[data_size][data_size]);
 	Grid expectedGrid(boost::extents[data_size][data_size]);
 
-	EXPECT_CALL(deadRules, Apply(0)).Times(Exactly(9)).WillRepeatedly(Return(false));
+	EXPECT_CALL(*deadRules, Apply(0)).Times(Exactly(9)).WillRepeatedly(Return(false));
 
 	const GridPtr response = accessor.access(firstGen);
 
@@ -29,8 +32,8 @@ TEST(RuleBasedGenerationAccessor, CanValidateBoardIsAllDead){
 TEST(RuleBasedGenerationAccessor, CanValidateBoardCallCorrectRulesForAllAlive){
 	const int data_size=3;
 
-	MockRules livingRules;
-	MockRules deadRules;
+	MockRulesPtr livingRules(new MockRules());
+	MockRulesPtr deadRules(new MockRules());
 
 	RuleBasedGenerationAccessor accessor(livingRules, deadRules);
 
@@ -43,9 +46,9 @@ TEST(RuleBasedGenerationAccessor, CanValidateBoardCallCorrectRulesForAllAlive){
 		}
 	}
 
-	EXPECT_CALL(livingRules, Apply(3)).Times(Exactly(4)).WillRepeatedly(Return(false));
-	EXPECT_CALL(livingRules, Apply(5)).Times(Exactly(4)).WillRepeatedly(Return(false));
-	EXPECT_CALL(livingRules, Apply(8)).Times(Exactly(1)).WillRepeatedly(Return(false));
+	EXPECT_CALL(*livingRules, Apply(3)).Times(Exactly(4)).WillRepeatedly(Return(false));
+	EXPECT_CALL(*livingRules, Apply(5)).Times(Exactly(4)).WillRepeatedly(Return(false));
+	EXPECT_CALL(*livingRules, Apply(8)).Times(Exactly(1)).WillRepeatedly(Return(false));
 
 	const GridPtr response = accessor.access(firstGen);
 
@@ -55,8 +58,8 @@ TEST(RuleBasedGenerationAccessor, CanValidateBoardCallCorrectRulesForAllAlive){
 TEST(RuleBasedGenerationAccessor, WillSetBoardBasedOnRules){
 	const int data_size=3;
 
-	MockRules deadRules;
-	MockRules livingRules;
+	MockRulesPtr livingRules(new MockRules());
+	MockRulesPtr deadRules(new MockRules());
 
 	RuleBasedGenerationAccessor accessor(livingRules, deadRules);
 
@@ -71,9 +74,9 @@ TEST(RuleBasedGenerationAccessor, WillSetBoardBasedOnRules){
 
 	expectedGrid[1][1] = true;
 
-	EXPECT_CALL(livingRules, Apply(3)).Times(Exactly(4)).WillRepeatedly(Return(false));
-	EXPECT_CALL(livingRules, Apply(5)).Times(Exactly(4)).WillRepeatedly(Return(false));
-	EXPECT_CALL(livingRules, Apply(8)).Times(Exactly(1)).WillRepeatedly(Return(true));
+	EXPECT_CALL(*livingRules, Apply(3)).Times(Exactly(4)).WillRepeatedly(Return(false));
+	EXPECT_CALL(*livingRules, Apply(5)).Times(Exactly(4)).WillRepeatedly(Return(false));
+	EXPECT_CALL(*livingRules, Apply(8)).Times(Exactly(1)).WillRepeatedly(Return(true));
 
 
 	const GridPtr response = accessor.access(firstGen);
@@ -84,8 +87,8 @@ TEST(RuleBasedGenerationAccessor, WillSetBoardBasedOnRules){
 TEST(RuleBasedGenerationAccessor, CanValidateBoardCallCorrectRulesForMixed){
 	const int data_size=3;
 
-	MockRules livingRules;
-	MockRules deadRules;
+	MockRulesPtr livingRules(new MockRules());
+	MockRulesPtr deadRules(new MockRules());
 
 	RuleBasedGenerationAccessor accessor(livingRules, deadRules);
 
@@ -95,10 +98,10 @@ TEST(RuleBasedGenerationAccessor, CanValidateBoardCallCorrectRulesForMixed){
 	firstGen[0][0] = true;
 	firstGen[0][1] = true;
 
-	EXPECT_CALL(deadRules, Apply(0)).Times(Exactly(3)).WillRepeatedly(Return(false));
-	EXPECT_CALL(deadRules, Apply(1)).Times(Exactly(2)).WillRepeatedly(Return(false));
-	EXPECT_CALL(deadRules, Apply(2)).Times(Exactly(2)).WillRepeatedly(Return(false));
-	EXPECT_CALL(livingRules, Apply(1)).Times(Exactly(2)).WillRepeatedly(Return(false));
+	EXPECT_CALL(*deadRules, Apply(0)).Times(Exactly(3)).WillRepeatedly(Return(false));
+	EXPECT_CALL(*deadRules, Apply(1)).Times(Exactly(2)).WillRepeatedly(Return(false));
+	EXPECT_CALL(*deadRules, Apply(2)).Times(Exactly(2)).WillRepeatedly(Return(false));
+	EXPECT_CALL(*livingRules, Apply(1)).Times(Exactly(2)).WillRepeatedly(Return(false));
 
 	const GridPtr response = accessor.access(firstGen);
 
@@ -108,8 +111,8 @@ TEST(RuleBasedGenerationAccessor, CanValidateBoardCallCorrectRulesForMixed){
 TEST(RuleBasedGenerationAccessor, WillApplyCorrectRulesForMixed){
 	const int data_size=3;
 
-	MockRules livingRules;
-	MockRules deadRules;
+	MockRulesPtr livingRules(new MockRules());
+	MockRulesPtr deadRules(new MockRules());
 
 	RuleBasedGenerationAccessor accessor(livingRules, deadRules);
 
@@ -123,10 +126,10 @@ TEST(RuleBasedGenerationAccessor, WillApplyCorrectRulesForMixed){
 	expectedGrid[2][1] = true;
 	expectedGrid[2][2] = true;
 
-	EXPECT_CALL(deadRules, Apply(0)).Times(Exactly(3)).WillRepeatedly(Return(true));
-	EXPECT_CALL(deadRules, Apply(1)).Times(Exactly(2)).WillRepeatedly(Return(false));
-	EXPECT_CALL(deadRules, Apply(2)).Times(Exactly(2)).WillRepeatedly(Return(false));
-	EXPECT_CALL(livingRules, Apply(1)).Times(Exactly(2)).WillRepeatedly(Return(false));
+	EXPECT_CALL(*deadRules, Apply(0)).Times(Exactly(3)).WillRepeatedly(Return(true));
+	EXPECT_CALL(*deadRules, Apply(1)).Times(Exactly(2)).WillRepeatedly(Return(false));
+	EXPECT_CALL(*deadRules, Apply(2)).Times(Exactly(2)).WillRepeatedly(Return(false));
+	EXPECT_CALL(*livingRules, Apply(1)).Times(Exactly(2)).WillRepeatedly(Return(false));
 
 	const GridPtr response = accessor.access(firstGen);
 

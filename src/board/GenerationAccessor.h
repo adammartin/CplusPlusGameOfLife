@@ -2,7 +2,7 @@
 #define GENERATIONACCESSOR_H_
 
 #include "Board.h"
-#include "boost/multi_array.hpp"
+#include <boost/multi_array.hpp>
 
 namespace GameOfLife {
 

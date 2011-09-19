@@ -1,10 +1,7 @@
 #include "board/board.h"
-#include "gtest/gtest.h"
-#include "Orchestrator.h"
-#include "board/RuleBasedGenerationAccessor.h"
-#include "board/rules/LivingRules.h"
-#include "board/rules/DeadRules.h"
+#include "OrchestratorFactory.h"
 #include "NCursesLineRenderer.h"
+#include <gtest/gtest.h>
 #include <string>
 #include <map>
 #include <iostream>
@@ -20,19 +17,17 @@ int usage(){
 	return 0;
 }
 
-void runGame(Orchestrator &orchestrator, int generations){
+void runGame(OrchestratorPtr orchestrator, int generations){
 	for(int i = 0; i < generations; i++){
-		orchestrator.nextGeneration();
+		orchestrator->nextGeneration();
 		usleep(100000);
 	}
 }
 
 int runGame(Pattern pattern, int generations){
-	LivingRules livingRules;
-	DeadRules deadRules;
-	RuleBasedGenerationAccessor accessor(livingRules, deadRules);
+	OrchestratorFactory factory;
 	NCursesLineRenderer renderer;
-	Orchestrator orchestrator(accessor, renderer, pattern);
+	OrchestratorPtr orchestrator = factory.create(renderer, pattern);
 	runGame(orchestrator, generations);
 	return 0;
 }
@@ -54,23 +49,18 @@ int executeOption(int argc, char* argv[]){
 		::testing::InitGoogleTest(&argc, argv);
 		return RUN_ALL_TESTS();
 	}
-	if(argc == 3 && patterns[string(arg)] && isdigit(*argv[2])){
-		return runGame(patterns[string(arg)], atoi(argv[2]));
+
+	map<string, Pattern>::iterator i = patterns.find(string(arg));
+	if (argc == 3 && i != patterns.end() && isdigit(*argv[2])) {
+		return runGame(i->second, atoi(argv[2]));
 	}
 	cout << arg << endl;
 	return usage();
 }
 
-int runOptions(int argc, char* argv[]){
+int main(int argc, char* argv[]) {
 	if(argc > 1){
 		return executeOption(argc, argv);
 	}
 	return usage();
-}
-
-int main(int argc, char* argv[]) {
-	if(argc > 1) {
-		return runOptions(argc, argv);
-	}
-	return 0;
 }

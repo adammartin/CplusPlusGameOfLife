@@ -13,7 +13,7 @@ namespace GameOfLife {
 		return val? '*' : ' ';
 	};
 
-	Orchestrator::Orchestrator(GenerationAccessor &rAccessor, LineRenderer &rRenderer, Pattern pattern):accessor(rAccessor), renderer(rRenderer) {
+	Orchestrator::Orchestrator(AccessorPtr accessor, LineRenderer &rRenderer, Pattern pattern):accessorPtr(accessor), renderer(rRenderer) {
 		Board board;
 		grid = board.build(pattern);
 	}
@@ -23,7 +23,7 @@ namespace GameOfLife {
 
 	void Orchestrator::nextGeneration(){
 		printBoard();
-		grid = accessor.access(*grid.get());
+		grid = (*accessorPtr).access(*grid.get());
 	}
 
 	void Orchestrator::printBoard(){

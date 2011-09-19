@@ -4,18 +4,21 @@
 #include "LineRenderer.h"
 #include "board/GenerationAccessor.h"
 #include "board/Board.h"
+#include <boost/shared_ptr.hpp>
+
+typedef boost::shared_ptr<GameOfLife::GenerationAccessor> AccessorPtr;
 
 namespace GameOfLife {
 
 	class Orchestrator {
 	public:
-		Orchestrator(GenerationAccessor &rAccessor, LineRenderer &rRenderer, Pattern pattern);
+		Orchestrator(AccessorPtr accessor, LineRenderer &rRenderer, Pattern pattern);
 		virtual ~Orchestrator();
 		void nextGeneration();
 	private:
 		void printBoard();
 		GridPtr grid;
-		GenerationAccessor &accessor;
+		AccessorPtr accessorPtr;
 		LineRenderer &renderer;
 	};
 
