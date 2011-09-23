@@ -34,7 +34,7 @@ string usage(){
 	return helpText;
 }
 
-GameInitializer::GameInitializer(LineRenderer &rRenderer, std::ostream &rOss, TestRunner &rRunner):renderer(rRenderer), oss(rOss), runner(rRunner) {
+GameInitializer::GameInitializer(const LineRenderer &rRenderer, std::ostream &rOss, const TestRunner &rRunner):renderer(rRenderer), oss(rOss), runner(rRunner) {
 }
 
 GameInitializer::~GameInitializer() {

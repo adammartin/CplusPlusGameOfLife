@@ -15,13 +15,13 @@ namespace GameOfLife {
 
 class GameInitializer {
 public:
-	GameInitializer(LineRenderer &rRenderer, std::ostream &rOss, TestRunner &rRunner);
+	GameInitializer(const LineRenderer &rRenderer, std::ostream &rOss, const TestRunner &rRunner);
 	virtual ~GameInitializer();
 	int execute(int argc, char* argv[]) const;
 private:
-	LineRenderer &renderer;
+	const LineRenderer &renderer;
 	std::ostream &oss;
-	TestRunner &runner;
+	const TestRunner &runner;
 };
 
 } /* namespace GameOfLife */
