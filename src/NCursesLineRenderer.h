@@ -10,9 +10,9 @@ namespace GameOfLife {
 	public:
 		NCursesLineRenderer();
 		virtual ~NCursesLineRenderer();
-		void clearScreen();
-		void refreshScreen();
-		void Render(const std::string &line);
+		void clearScreen() const;
+		void refreshScreen() const;
+		void Render(const std::string &line) const;
 	};
 
 	} /* namespace GameOfLife */

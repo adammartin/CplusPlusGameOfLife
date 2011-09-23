@@ -12,13 +12,13 @@ namespace GameOfLife {
 		endwin();
 	}
 
-	void NCursesLineRenderer::clearScreen(){
+	void NCursesLineRenderer::clearScreen() const {
 		clear();
 	};
-	void NCursesLineRenderer::refreshScreen(){
+	void NCursesLineRenderer::refreshScreen() const {
 		refresh();
 	};
-	void NCursesLineRenderer::Render(const std::string &line){
+	void NCursesLineRenderer::Render(const std::string &line) const {
 		const char *charLine = (char*)line.c_str();
 		printw(charLine);
 		printw("\n");

@@ -8,9 +8,9 @@ class LineRenderer {
 public:
 	LineRenderer(){};
 	virtual ~LineRenderer(){};
-	virtual void clearScreen(){};
-	virtual void refreshScreen(){};
-	virtual void Render(const std::string &line){};
+	virtual void clearScreen() const = 0;
+	virtual void refreshScreen() const = 0;
+	virtual void Render(const std::string &line) const = 0;
 };
 
 #endif /* LINERENDERER_H_ */
