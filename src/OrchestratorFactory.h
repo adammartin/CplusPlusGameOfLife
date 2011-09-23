@@ -11,7 +11,7 @@ class OrchestratorFactory {
 	public:
 		OrchestratorFactory();
 		virtual ~OrchestratorFactory();
-		OrchestratorPtr create(const LineRenderer &renderer, const Pattern pattern) const;
+		const OrchestratorPtr create(const LineRenderer &renderer, const Pattern pattern) const;
 	};
 
 } /* namespace GameOfLife */
