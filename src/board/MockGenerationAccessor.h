@@ -1,3 +1,6 @@
+#ifndef MOCKGENRATIONACCESSOR_H_
+#define MOCKGENRATIONACCESSOR_H_
+
 #include "GenerationAccessor.h"
 #include "gmock/gmock.h"
 #include "Board.h"
@@ -5,14 +8,12 @@
 
 namespace GameOfLife {
 
-class MockGenerationAccessor : public GenerationAccessor {
- public:
-  MOCK_CONST_METHOD1(access,
-      GridPtr(const Grid &grid));
-};
+	class MockGenerationAccessor : public GenerationAccessor {
+	 public:
+	  MOCK_CONST_METHOD1(access,
+		  GridPtr(const Grid &grid));
+	};
 
 }  // namespace GameOfLife
 
-
-
-
+#endif //MOCKGENRATIONACCESSOR_H_

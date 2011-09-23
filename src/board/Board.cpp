@@ -6,7 +6,7 @@ using namespace std;
 using namespace boost;
 
 namespace GameOfLife {
-	short Board::validRow(const short index){
+	short Board::validRow(const short index) const {
 		short length = boardData.shape()[0];
 		if(index < 0) {
 			return 0;
@@ -15,7 +15,7 @@ namespace GameOfLife {
 		}
 		return index;
 	};
-	short Board::validColumn(const short index){
+	short Board::validColumn(const short index) const {
 		short length = boardData.shape()[1];
 		if(index < 0) {
 			return 0;
@@ -25,7 +25,7 @@ namespace GameOfLife {
 		return index;
 	};
 
-	bool Board::isAlive(unsigned short row, unsigned short column){
+	bool Board::isAlive(unsigned short row, unsigned short column) const {
 		return boardData[row][column];
 	}
 
@@ -35,7 +35,7 @@ namespace GameOfLife {
 	Board::Board(const Grid &newBoard):boardData(newBoard) {
 	};
 
-	GridPtr Board::build(Pattern pattern) {
+	const GridPtr Board::build(Pattern pattern) const {
 		GridPtr newGrid(new Grid(boost::extents[30][120]));
 		switch(pattern){
 		case BLINKER:
@@ -134,7 +134,7 @@ namespace GameOfLife {
 		return newGrid;
 	}
 
-	unsigned short Board::getNeighbors(unsigned short row, unsigned short column){
+	unsigned short Board::getNeighbors(unsigned short row, unsigned short column) const {
 		unsigned short count = 0;
 		for(short rowPos = validRow(row-1); rowPos <= validRow(row+1); rowPos++){
 			for(short columnPos = validColumn(column-1); columnPos <= validColumn(column+1); columnPos++){

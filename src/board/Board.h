@@ -15,16 +15,16 @@ namespace GameOfLife {
 		Board();
 		explicit Board(const Grid &newBoard);
 		virtual ~Board(){};
-		GridPtr build(Pattern pattern);
-		unsigned short getNeighbors(unsigned short row, unsigned short column);
+		const GridPtr build(Pattern pattern) const;
+		unsigned short getNeighbors(unsigned short row, unsigned short column) const;
 		bool operator==(const Board &other) const;
 		bool operator!=(const Board &other) const;
 
 	private:
 		const Grid &boardData;
-		short validRow(const short index);
-		short validColumn(const short index);
-		bool isAlive(unsigned short row, unsigned short column);
+		short validRow(const short index) const;
+		short validColumn(const short index) const;
+		bool isAlive(unsigned short row, unsigned short column) const;
 	};
 }
 #endif /* BOARD_H_ */
