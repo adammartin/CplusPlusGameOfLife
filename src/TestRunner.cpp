@@ -7,7 +7,7 @@ TestRunner::TestRunner() {
 TestRunner::~TestRunner() {
 }
 
-int TestRunner::executeTests(int argc, char* argv[]){
+int TestRunner::executeTests(int argc, char* argv[]) const {
 	::testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();
 }
