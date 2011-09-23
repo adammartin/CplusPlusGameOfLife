@@ -15,7 +15,7 @@ namespace GameOfLife {
 	public:
 		RuleBasedGenerationAccessor(const RulesPtr livingRules, const RulesPtr deadRules);
 		virtual ~RuleBasedGenerationAccessor();
-		virtual GridPtr access(const Grid &grid) const;
+		const GridPtr access(const Grid &grid) const;
 	private:
 		const RulesPtr LivingRules;
 		const RulesPtr DeadRules;

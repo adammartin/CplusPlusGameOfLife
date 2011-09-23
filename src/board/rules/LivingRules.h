@@ -9,7 +9,7 @@ namespace GameOfLife {
 	public:
 		LivingRules();
 		virtual ~LivingRules();
-		bool Apply(const unsigned short neighbors) const;
+		const bool Apply(const unsigned short neighbors) const;
 	};
 
 }
