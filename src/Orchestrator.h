@@ -12,14 +12,14 @@ namespace GameOfLife {
 
 	class Orchestrator {
 	public:
-		Orchestrator(AccessorPtr accessor, LineRenderer &rRenderer, Pattern pattern);
+		Orchestrator(AccessorPtr accessor, const LineRenderer &rRenderer, const Pattern pattern);
 		virtual ~Orchestrator();
 		void nextGeneration();
 	private:
 		void printBoard();
 		GridPtr grid;
 		AccessorPtr accessorPtr;
-		LineRenderer &renderer;
+		const LineRenderer &renderer;
 	};
 
 }

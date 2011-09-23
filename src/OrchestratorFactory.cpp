@@ -15,7 +15,7 @@ namespace GameOfLife {
 	OrchestratorFactory::~OrchestratorFactory() {
 	}
 
-	OrchestratorPtr OrchestratorFactory::create(LineRenderer &renderer, Pattern pattern){
+	OrchestratorPtr OrchestratorFactory::create(const LineRenderer &renderer, const Pattern pattern) const{
 		RulesPtr livingRules(new LivingRules());
 		RulesPtr deadRules(new DeadRules());
 		AccessorPtr accessor(new RuleBasedGenerationAccessor(livingRules, deadRules));
