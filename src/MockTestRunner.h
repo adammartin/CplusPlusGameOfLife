@@ -7,7 +7,7 @@
 
 class MockTestRunner : public TestRunner {
 public:
-	MOCK_CONST_METHOD2(executeTests, int(int argc, char* argv[]));
+	MOCK_CONST_METHOD2(executeTests, const int(int argc, char* argv[]));
 };
 
 #endif /* MOCKTESTRUNNER_H_ */

@@ -5,7 +5,7 @@ class TestRunner {
 public:
 	TestRunner();
 	virtual ~TestRunner();
-	virtual int executeTests(int argc, char* argv[]) const;
+	virtual const int executeTests(int argc, char* argv[]) const;
 };
 
 #endif /* TESTRUNNER_H_ */

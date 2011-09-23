@@ -40,7 +40,7 @@ GameInitializer::GameInitializer(const LineRenderer &rRenderer, std::ostream &rO
 GameInitializer::~GameInitializer() {
 }
 
-int GameInitializer::execute(int argc, char* argv[]) const {
+const int GameInitializer::execute(int argc, char* argv[]) const {
 	char* arg = argv[1];
 	if(!strcmp(arg,"-test")){
 		return runner.executeTests(argc, argv);

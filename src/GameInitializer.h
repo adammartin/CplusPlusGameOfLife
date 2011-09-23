@@ -17,7 +17,7 @@ class GameInitializer {
 public:
 	GameInitializer(const LineRenderer &rRenderer, std::ostream &rOss, const TestRunner &rRunner);
 	virtual ~GameInitializer();
-	int execute(int argc, char* argv[]) const;
+	const int execute(int argc, char* argv[]) const;
 private:
 	const LineRenderer &renderer;
 	std::ostream &oss;
