@@ -6,7 +6,7 @@ namespace GameOfLife {
 	public:
 		Rules(){};
 		virtual ~Rules(){};
-		virtual const bool Apply(const unsigned short neighbors) const { return false; };
+		virtual const bool Apply(const unsigned short neighbors) const = 0;
 	};
 }
 #endif /* RULES_H_ */
