@@ -1,8 +1,9 @@
+#ifndef MOCKTESTRUNNER_H_
+#define MOCKTESTRUNNER_H_
+
 #include "TestRunner.h"
 #include <gmock/gmock.h>
 
-#ifndef MOCKTESTRUNNER_H_
-#define MOCKTESTRUNNER_H_
 
 class MockTestRunner : public TestRunner {
 public:

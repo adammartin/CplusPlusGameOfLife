@@ -16,7 +16,7 @@ namespace GameOfLife {
 		virtual ~Orchestrator();
 		void nextGeneration();
 	private:
-		void printBoard();
+		void printBoard() const;
 		GridPtr grid;
 		AccessorPtr accessorPtr;
 		const LineRenderer &renderer;

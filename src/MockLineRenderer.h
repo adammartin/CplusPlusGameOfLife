@@ -1,3 +1,6 @@
+#ifndef MOCKLINERENDERER_H_
+#define MOCKLINERENDERER_H_
+
 #include "LineRenderer.h"
 #include <gmock/gmock.h>
 #include <string>
@@ -14,3 +17,4 @@ class MockLineRenderer : public LineRenderer {
       void(const std::string &line));
 };
 
+#endif /* MOCKLINERENDERER */

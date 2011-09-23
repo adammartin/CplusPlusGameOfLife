@@ -26,7 +26,7 @@ namespace GameOfLife {
 		grid = (*accessorPtr).access(*grid.get());
 	}
 
-	void Orchestrator::printBoard(){
+	void Orchestrator::printBoard() const{
 		renderer.clearScreen();
 		for (Grid::iterator i = grid->begin(); i != grid->end(); i++) {
 			string line;
