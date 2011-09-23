@@ -1,10 +1,3 @@
-/*
- * TestRunner.h
- *
- *  Created on: Sep 21, 2011
- *      Author: adammartin
- */
-
 #ifndef TESTRUNNER_H_
 #define TESTRUNNER_H_
 
