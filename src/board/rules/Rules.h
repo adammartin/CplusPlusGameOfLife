@@ -5,8 +5,8 @@ namespace GameOfLife {
 	class Rules {
 	public:
 		Rules(){};
-		virtual ~Rules(){}
-		virtual bool Apply(const unsigned short neighbors);
+		virtual ~Rules(){};
+		virtual bool Apply(const unsigned short neighbors) const { return false; };
 	};
 }
 #endif /* RULES_H_ */

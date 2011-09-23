@@ -1,10 +1,10 @@
-#include "gtest/gtest.h"
-#include "gmock/gmock.h"
 #include "MockLineRenderer.h"
 #include "board/MockGenerationAccessor.h"
 #include "board/GenerationAccessor.h"
 #include "Orchestrator.h"
 #include "board/Board.h"
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
 #include <string>
 #include <boost/shared_ptr.hpp>
 

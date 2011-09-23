@@ -10,7 +10,7 @@ namespace GameOfLife {
 	public:
 		GenerationAccessor(){};
 		virtual ~GenerationAccessor(){};
-		virtual GridPtr access(const Grid &grid){
+		virtual GridPtr access(const Grid &grid) {
 			return GridPtr(new Grid);
 		};
 	};

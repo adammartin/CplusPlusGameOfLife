@@ -8,7 +8,7 @@ namespace GameOfLife {
 	DeadRules::~DeadRules() {
 	}
 
-	bool DeadRules::Apply(const unsigned short neighbors) {
+	bool DeadRules::Apply(const unsigned short neighbors) const {
 		return (neighbors == 3) ? true : false;
 	}
 
