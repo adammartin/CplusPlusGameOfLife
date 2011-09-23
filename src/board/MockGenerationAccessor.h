@@ -5,11 +5,11 @@
 
 namespace GameOfLife {
 
-	class MockGenerationAccessor : public GenerationAccessor {
-	 public:
-	  MOCK_METHOD1(access,
-		  GridPtr(const Grid &grid));
-	};
+class MockGenerationAccessor : public GenerationAccessor {
+ public:
+  MOCK_CONST_METHOD1(access,
+      GridPtr(const Grid &grid));
+};
 
 }  // namespace GameOfLife
 

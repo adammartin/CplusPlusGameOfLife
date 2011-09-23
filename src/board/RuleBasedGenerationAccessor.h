@@ -13,12 +13,12 @@ namespace GameOfLife {
 
 	class RuleBasedGenerationAccessor : public GenerationAccessor {
 	public:
-		RuleBasedGenerationAccessor(RulesPtr livingRules, RulesPtr deadRules);
+		RuleBasedGenerationAccessor(const RulesPtr livingRules, const RulesPtr deadRules);
 		virtual ~RuleBasedGenerationAccessor();
-		virtual GridPtr access(const Grid &grid);
+		virtual GridPtr access(const Grid &grid) const;
 	private:
-		RulesPtr LivingRules;
-		RulesPtr DeadRules;
+		const RulesPtr LivingRules;
+		const RulesPtr DeadRules;
 	};
 
 } /* namespace GameOfLife */

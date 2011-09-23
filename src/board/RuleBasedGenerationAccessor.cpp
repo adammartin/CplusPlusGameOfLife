@@ -7,13 +7,13 @@ using namespace std;
 using ::type_info;
 
 namespace GameOfLife {
-	RuleBasedGenerationAccessor::RuleBasedGenerationAccessor(RulesPtr livingRules, RulesPtr deadRules) :LivingRules(livingRules), DeadRules(deadRules) {
+	RuleBasedGenerationAccessor::RuleBasedGenerationAccessor(const RulesPtr livingRules, const RulesPtr deadRules) :LivingRules(livingRules), DeadRules(deadRules) {
 	}
 
 	RuleBasedGenerationAccessor::~RuleBasedGenerationAccessor() {
 	}
 
-	GridPtr RuleBasedGenerationAccessor::access(const Grid &grid){
+	GridPtr RuleBasedGenerationAccessor::access(const Grid &grid) const {
 		const Grid::size_type *shape = grid.shape();
 		Board oldBoard(grid);
 		GridPtr newGrid(new Grid(boost::extents[shape[0]][shape[1]]));

@@ -1,12 +1,12 @@
+#ifndef GAMEINITIALIZER_H_
+#define GAMEINITIALIZER_H_
+
 #include <iostream>
 #include <string>
 #include <map>
 #include "board/board.h"
 #include "LineRenderer.h"
 #include "TestRunner.h"
-
-#ifndef GAMEINITIALIZER_H_
-#define GAMEINITIALIZER_H_
 
 typedef std::map<std::string, Pattern> PatternMap;
 
