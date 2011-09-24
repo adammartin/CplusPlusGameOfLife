@@ -12,7 +12,6 @@ typedef boost::shared_ptr<GameOfLife::MockGenerationAccessor> MockGenAccessorPtr
 
 using ::testing::Exactly;
 using ::testing::Return;
-using ::testing::Pointee;
 using namespace GameOfLife;
 using namespace std;
 

@@ -1,15 +1,16 @@
-#include "MockLineRenderer.h"
 #include "GameInitializer.h"
 #include "MockTestRunner.h";
+#include "MockGameRunner.h";
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include <sstream>
+#include <string>
 
 using ::testing::Exactly;
 using ::testing::Return;
 using ::testing::_;
 
 using namespace GameOfLife;
+using namespace std;
 
 class GameInitializerTest : public ::testing::Test {
 protected:
@@ -50,43 +51,73 @@ protected:
 
 };
 
-TEST_F(GameInitializerTest, CanRunTests){
-	MockLineRenderer renderer;
-	MockTestRunner testRunner;
-	stringstream ostream;
-	GameInitializer initializer(renderer, ostream, testRunner);
-
-	int argc = 2;
-	char *argv[3];
-	argv[0] = const_cast<char*>("GameOfLife");
-	argv[1] = const_cast<char*>("-test");
-	argv[2] = 0;
-
-	EXPECT_CALL(testRunner, executeTests(_, _)).Times(Exactly(1)).WillOnce(Return(0));
-
-	int result = initializer.execute(argc, argv);
-
-	EXPECT_EQ(0, result);
-}
-
 TEST_F(GameInitializerTest, CanPrintHelp){
-	MockLineRenderer renderer;
-	MockTestRunner testRunner;
-	stringstream ostream;
-	GameInitializer initializer(renderer, ostream, testRunner);
+	MockGameRunner gameRunner;
+	GameInitializer initializer(gameRunner);
 
 	int argc = 2;
-	char *argv[3];
+	char *argv[argc+1];
 	argv[0] = const_cast<char*>("GameOfLife");
 	argv[1] = const_cast<char*>("-help");
 	argv[2] = 0;
 
-	EXPECT_CALL(testRunner, executeTests(_, _)).Times(Exactly(0));
+	EXPECT_CALL(gameRunner, run(_, _)).Times(Exactly(0));
 
-	int result = initializer.execute(argc, argv);
-	EXPECT_EQ(helpText, ostream.str());
+	string result = initializer.execute(argc, argv);
 
-	EXPECT_EQ(0, result);
+	EXPECT_EQ(helpText, result);
+}
+
+TEST_F(GameInitializerTest, WillPrintHelpIfNoArgsGiven){
+	MockGameRunner gameRunner;
+	GameInitializer initializer(gameRunner);
+
+	int argc = 1;
+	char *argv[argc+1];
+	argv[0] = const_cast<char*>("GameOfLife");
+	argv[1] = 0;
+
+	EXPECT_CALL(gameRunner, run(_, _)).Times(Exactly(0));
+
+	string result = initializer.execute(argc, argv);
+
+	EXPECT_EQ(helpText, result);
+}
+
+TEST_F(GameInitializerTest, CanAcornRunGame){
+	MockGameRunner gameRunner;
+	GameInitializer initializer(gameRunner);
+
+	int argc = 3;
+	char *argv[argc+1];
+	argv[0] = const_cast<char*>("GameOfLife");
+	argv[1] = const_cast<char*>("ACORN");
+	argv[2] = const_cast<char*>("1");
+	argv[3] = 0;
+
+	EXPECT_CALL(gameRunner, run(_, 1)).Times(Exactly(1));
+
+	string result = initializer.execute(argc, argv);
+
+	EXPECT_EQ("", result);
+}
+
+TEST_F(GameInitializerTest, CanToadRunGame){
+	MockGameRunner gameRunner;
+	GameInitializer initializer(gameRunner);
+
+	int argc = 3;
+	char *argv[argc+1];
+	argv[0] = const_cast<char*>("GameOfLife");
+	argv[1] = const_cast<char*>("TOAD");
+	argv[2] = const_cast<char*>("2");
+	argv[3] = 0;
+
+	EXPECT_CALL(gameRunner, run(_, 2)).Times(Exactly(1));
+
+	string result = initializer.execute(argc, argv);
+
+	EXPECT_EQ("", result);
 }
 
 

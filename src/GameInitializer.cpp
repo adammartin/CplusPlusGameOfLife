@@ -1,4 +1,6 @@
 #include "GameInitializer.h"
+#include "OrchestratorFactory.h"
+#include "NCursesLineRenderer.h"
 #include <string>
 
 using namespace std;
@@ -15,7 +17,7 @@ PatternMap buildPatterns(){
 	return patterns;
 }
 
-string printPatternOptions(){
+const string printPatternOptions(){
 	PatternMap map = buildPatterns();
 	PatternMap::iterator iter = map.begin();
 	string patternOptions("[ ");
@@ -26,7 +28,7 @@ string printPatternOptions(){
 	return patternOptions;
 }
 
-string usage(){
+const string usage(){
 	string helpText("-help: help message\n");
 	helpText += "-test: run tests\n";
 	helpText += printPatternOptions();
@@ -34,19 +36,36 @@ string usage(){
 	return helpText;
 }
 
-GameInitializer::GameInitializer(const LineRenderer &rRenderer, std::ostream &rOss, const TestRunner &rRunner):renderer(rRenderer), oss(rOss), runner(rRunner) {
+const bool hasValidPattern(int argc, char* argv[]){
+	if(argc == 3 && isdigit(*argv[2])){
+		PatternMap patterns = buildPatterns();
+		PatternMapIterator iter = patterns.find(string(argv[1]));
+		return iter != patterns.end();
+	}
+	return false;
+}
+
+GameInitializer::GameInitializer(const GameRunner &rGameRunner):gameRunner(rGameRunner) {
 }
 
 GameInitializer::~GameInitializer() {
 }
 
-const int GameInitializer::execute(int argc, char* argv[]) const {
-	char* arg = argv[1];
-	if(!strcmp(arg,"-test")){
-		return runner.executeTests(argc, argv);
+const string GameInitializer::execute(int argc, char* argv[]) const {
+	if(hasValidPattern(argc, argv)) {
+		PatternMap patterns = buildPatterns();
+		PatternMapIterator iter = patterns.find(string(argv[1]));
+		return runGame(iter->second, atoi(argv[2]));
 	}
-	oss << usage();
-	return 0;
+	return usage();
+}
+
+const string GameInitializer::runGame(const Pattern pattern, const int generations) const{
+	OrchestratorFactory factory;
+	NCursesLineRenderer renderer;
+	OrchestratorPtr orchestrator = factory.create(renderer, pattern);
+	gameRunner.run(orchestrator, generations);
+	return string("");
 }
 
 } /* namespace GameOfLife */

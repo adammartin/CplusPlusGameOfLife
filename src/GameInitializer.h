@@ -1,27 +1,25 @@
 #ifndef GAMEINITIALIZER_H_
 #define GAMEINITIALIZER_H_
 
-#include <iostream>
-#include <string>
-#include <map>
 #include "board/board.h"
-#include "LineRenderer.h"
-#include "TestRunner.h"
+#include "GameRunner.h"
+#include <map>
+#include <string>
 
 typedef std::map<std::string, Pattern> PatternMap;
+typedef PatternMap::iterator PatternMapIterator;
 
 namespace GameOfLife {
 
 
 class GameInitializer {
 public:
-	GameInitializer(const LineRenderer &rRenderer, std::ostream &rOss, const TestRunner &rRunner);
+	GameInitializer(const GameRunner &rGameRunner);
 	virtual ~GameInitializer();
-	const int execute(int argc, char* argv[]) const;
+	const std::string execute(int argc, char* argv[]) const;
 private:
-	const LineRenderer &renderer;
-	std::ostream &oss;
-	const TestRunner &runner;
+	const std::string runGame(const Pattern pattern, const int generations) const;
+	const GameRunner &gameRunner;
 };
 
 } /* namespace GameOfLife */
