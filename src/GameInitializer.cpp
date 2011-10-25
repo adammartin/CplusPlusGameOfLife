@@ -39,8 +39,7 @@ const string usage(){
 const bool hasValidPattern(int argc, char* argv[]){
 	if(argc == 3 && isdigit(*argv[2])){
 		PatternMap patterns = buildPatterns();
-		PatternMapIterator iter = patterns.find(string(argv[1]));
-		return iter != patterns.end();
+		return patterns.find(string(argv[1])) != patterns.end();
 	}
 	return false;
 }
